@@ -22,6 +22,9 @@
         .portfolio-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .portfolio-card:hover { transform: translateY(-8px); }
         .filter-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
+        /* ซ่อน Scrollbar สำหรับ Filter */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 
@@ -42,18 +45,18 @@
     </nav>
 
     <header class="bg-white dark:bg-slate-900 py-16 border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
             <h1 class="text-4xl font-bold text-slate-900 dark:text-white">คลังผลงานทั้งหมด</h1>
-            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl">สำรวจโปรเจกต์ที่ผ่านมาของผม ทั้งด้านการพัฒนาซอฟต์แวร์ การตลาดดิจิทัล และงานออกแบบ</p>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl">รวบรวมโปรเจกต์ที่ผ่านมา ทั้งการพัฒนาเว็บ, การตลาดดิจิทัล, SEO และงานดีไซน์</p>
         </div>
     </header>
 
     <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 flex gap-3 overflow-x-auto no-scrollbar">
-            <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">ทั้งหมด</button>
-            <button onclick="filterProjects('Web Development')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Web Dev</button>
-            <button onclick="filterProjects('Design')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Design</button>
-            <button onclick="filterProjects('Marketing')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Marketing</button>
+            <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 transition-all">ทั้งหมด</button>
+            <button onclick="filterProjects('Web Development')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">Web Dev</button>
+            <button onclick="filterProjects('Design')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">Design</button>
+            <button onclick="filterProjects('Marketing')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">Marketing</button>
         </div>
     </div>
 
@@ -74,24 +77,45 @@
     {
         "projects": [
             {
-                "title": "E-commerce Platform",
+                "title": "SEO Strategy & Audit",
+                "category": "Marketing",
+                "desc": "เพิ่ม Organic Traffic ให้กับเว็บไซต์ธุรกิจท่องเที่ยวด้วยการวางโครงสร้าง Content ใหม่",
+                "image": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=800",
+                "link": "#"
+            },
+            {
+                "title": "Modern E-commerce Web",
                 "category": "Web Development",
-                "desc": "ระบบร้านค้าออนไลน์พร้อมระบบตะกร้าสินค้าและการชำระเงิน",
-                "image": "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800",
-                "link": "https://github.com"
+                "desc": "พัฒนาแพลตฟอร์มร้านค้าออนไลน์ด้วยเทคโนโลยี React และ Tailwind CSS รองรับการจ่ายเงินเต็มรูปแบบ",
+                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
+                "link": "#"
             },
             {
                 "title": "Corporate Brand Identity",
                 "category": "Design",
-                "desc": "งานออกแบบอัตลักษณ์องค์กรครบวงจรสำหรับบริษัท Start-up",
+                "desc": "ออกแบบโลโก้และ Mood & Tone สำหรับบริษัทสตาร์ทอัพทางด้านเทคโนโลยี",
                 "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800",
                 "link": "#"
             },
             {
-                "title": "SEO & Content Strategy",
+                "title": "Looker Studio Dashboard",
                 "category": "Marketing",
-                "desc": "แคมเปญเพิ่ม Organic Traffic 150% ภายใน 4 เดือน",
-                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
+                "desc": "สร้างระบบวิเคราะห์ข้อมูลการตลาดแบบ Real-time เพื่อการตัดสินใจทางธุรกิจที่แม่นยำ",
+                "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800",
+                "link": "#"
+            },
+            {
+                "title": "LMS Learning App",
+                "category": "Web Development",
+                "desc": "ระบบจัดการเรียนการสอนออนไลน์ พร้อมระบบวิดีโอและควิซทดสอบสำหรับพนักงานองค์กร",
+                "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=800",
+                "link": "#"
+            },
+            {
+                "title": "Social Media Ad Sets",
+                "category": "Design",
+                "desc": "ชุดงานดีไซน์โฆษณา Facebook และ Instagram ที่ช่วยเพิ่ม Click-through Rate (CTR) กว่า 40%",
+                "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800",
                 "link": "#"
             }
         ]
@@ -99,7 +123,7 @@
     </script>
 
     <script>
-        // 1. Dark Mode Toggle Logic
+        // 1. ระบบจัดการ Dark Mode
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -121,28 +145,30 @@
             }
         });
 
-        // 2. Dynamic Rendering Logic
+        // 2. ฟังก์ชัน Render ผลงานจาก JSON
         function renderProjects(filter = 'all') {
             const grid = document.getElementById('portfolio-grid');
             const data = JSON.parse(document.getElementById('portfolio-db').textContent);
             grid.innerHTML = '';
 
-            const filtered = filter === 'all' ? data.projects : data.projects.filter(p => p.category === filter);
+            const filtered = filter === 'all' 
+                ? data.projects 
+                : data.projects.filter(p => p.category === filter);
 
             filtered.forEach(project => {
                 grid.innerHTML += `
-                    <div class="portfolio-card bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col">
+                    <div class="portfolio-card bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col h-full">
                         <div class="aspect-video relative overflow-hidden bg-slate-200 dark:bg-slate-700">
-                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6 flex-grow">
                             <span class="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest">${project.category}</span>
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">${project.title}</h3>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2 leading-tight">${project.title}</h3>
                             <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm leading-relaxed">${project.desc}</p>
                         </div>
-                        <div class="px-6 pb-6 mt-auto">
+                        <div class="px-6 pb-6">
                             <a href="${project.link}" target="_blank" class="text-slate-900 dark:text-white font-semibold text-sm inline-flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                ดูรายละเอียด
+                                ดูรายละเอียดโปรเจกต์
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </a>
                         </div>
@@ -151,7 +177,7 @@
             });
         }
 
-        // 3. Filter Execution
+        // 3. ฟังก์ชันตัวกรองผลงาน
         function filterProjects(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active', 'bg-blue-600', 'text-white', 'dark:bg-blue-600');
@@ -161,7 +187,7 @@
             renderProjects(category);
         }
 
-        // 4. Initial Load
+        // 4. ตั้งค่าปีลิขสิทธิ์และโหลดข้อมูลครั้งแรก
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
         renderProjects();
     </script>

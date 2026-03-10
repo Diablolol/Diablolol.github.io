@@ -7,173 +7,186 @@
 
 <title>ผลงานทั้งหมด | Portfolio</title>
 
-<meta name="description" content="รวมผลงานบริการ เขียนบทความ SEO ออกแบบกราฟิก พัฒนาเว็บไซต์ การตลาด Data Analytics และอื่นๆ">
+<meta name="description" content="รวมผลงานบริการ SEO Graphic Website Marketing Data Analytics และอื่นๆ">
 
 <style>
 
 :root{
 --bg:#ffffff;
---text:#111111;
---card:#f4f4f4;
---accent:#4f46e5;
+--text:#111;
+--card:#f5f5f5;
+--accent:#6366f1;
+--border:#ddd;
 }
 
 body.dark{
 --bg:#0f172a;
---text:#f8fafc;
+--text:#f1f5f9;
 --card:#1e293b;
+--border:#334155;
 }
 
 body{
 margin:0;
-font-family:Arial;
+font-family:system-ui;
 background:var(--bg);
 color:var(--text);
-transition:0.3s;
+transition:.3s;
 }
 
 header{
 display:flex;
+flex-wrap:wrap;
+gap:15px;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
-border-bottom:1px solid #ddd;
+padding:20px;
+border-bottom:1px solid var(--border);
 }
 
 h1{
 margin:0;
+font-size:22px;
 }
 
-.toggle{
-padding:8px 14px;
-cursor:pointer;
+.controls{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+input,select{
+padding:8px 10px;
 border-radius:6px;
+border:1px solid var(--border);
+}
+
+button{
+padding:8px 14px;
 border:none;
+border-radius:6px;
 background:var(--accent);
 color:white;
+cursor:pointer;
 }
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:40px 20px;
+padding:30px 20px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:20px;
 }
 
 .card{
 background:var(--card);
+border-radius:12px;
 padding:20px;
-border-radius:10px;
-transition:0.3s;
+transition:.3s;
 cursor:pointer;
+border:1px solid var(--border);
 }
 
 .card:hover{
 transform:translateY(-5px);
 }
 
+.icon{
+width:40px;
+height:40px;
+margin-bottom:10px;
+}
+
 .card h3{
-margin-top:0;
+margin:10px 0 5px 0;
 }
 
 .category{
-margin-bottom:40px;
-}
-
-.category h2{
-margin-bottom:20px;
-border-left:5px solid var(--accent);
-padding-left:10px;
+font-size:13px;
+opacity:.7;
 }
 
 </style>
 
 </head>
+
 <body>
 
 <header>
 
-<h1>ผลงานทั้งหมด</h1>
+<h1>Portfolio ผลงานทั้งหมด</h1>
 
-<button class="toggle" onclick="toggleMode()">
-🌙 Dark Mode
-</button>
+<div class="controls">
+
+<input id="searchInput" type="text" placeholder="ค้นหาผลงาน...">
+
+<select id="serviceFilter">
+<option value="all">ทุกบริการ</option>
+<option value="seo">เขียนบทความ SEO</option>
+<option value="graphic">ออกแบบกราฟิก</option>
+<option value="poster">ทำโปสเตอร์</option>
+<option value="web">เขียนเว็บไซต์</option>
+<option value="data">Data Analytics</option>
+<option value="marketing">Marketing</option>
+<option value="photo">Photography / Video</option>
+<option value="organization">Organization</option>
+<option value="translation">แปลภาษา</option>
+<option value="mockup">Creative Mockup</option>
+</select>
+
+<button onclick="toggleMode()">🌙</button>
+
+</div>
 
 </header>
 
-<div class="container" id="portfolioContainer"></div>
+
+<div class="container">
+
+<div class="grid" id="portfolioGrid"></div>
+
+</div>
 
 
 <script>
 
-const services = {
+const servicesData = [
 
-seo:[
-{title:"บทความ SEO ธุรกิจท่องเที่ยว"},
-{title:"บทความ SEO ร้านอาหาร"},
-{title:"บทความ SEO เทคโนโลยี"}
-],
+{title:"บทความ SEO ธุรกิจท่องเที่ยว",service:"seo"},
+{title:"บทความ SEO ร้านอาหาร",service:"seo"},
 
-graphic:[
-{title:"ออกแบบ Banner Facebook"},
-{title:"ออกแบบ Logo"},
-{title:"ออกแบบ Branding"}
-],
+{title:"ออกแบบ Banner Facebook",service:"graphic"},
+{title:"ออกแบบ Logo Branding",service:"graphic"},
 
-poster:[
-{title:"โปสเตอร์โปรโมทสินค้า"},
-{title:"โปสเตอร์อีเวนต์"},
-{title:"โปสเตอร์โฆษณา"}
-],
+{title:"โปสเตอร์โปรโมทสินค้า",service:"poster"},
+{title:"โปสเตอร์งาน Event",service:"poster"},
 
-web:[
-{title:"เว็บไซต์บริษัท"},
-{title:"Landing Page"},
-{title:"E-commerce"}
-],
+{title:"Corporate Website",service:"web"},
+{title:"Landing Page ธุรกิจ",service:"web"},
 
-data:[
-{title:"Dashboard วิเคราะห์ยอดขาย"},
-{title:"Data Visualization"},
-{title:"Business Analytics"}
-],
+{title:"Dashboard วิเคราะห์ยอดขาย",service:"data"},
+{title:"Data Visualization",service:"data"},
 
-marketing:[
-{title:"วางแผน Digital Marketing"},
-{title:"SEO Strategy"},
-{title:"Social Media Campaign"}
-],
+{title:"Digital Marketing Strategy",service:"marketing"},
+{title:"Social Media Campaign",service:"marketing"},
 
-photo:[
-{title:"ถ่ายภาพสินค้า"},
-{title:"ถ่ายวิดีโอโฆษณา"},
-{title:"ตัดต่อวิดีโอโปรโมท"}
-],
+{title:"ถ่ายภาพสินค้า",service:"photo"},
+{title:"ตัดต่อวิดีโอโฆษณา",service:"photo"},
 
-organization:[
-{title:"จัดอีเวนต์บริษัท"},
-{title:"จัดงานสัมมนา"},
-{title:"จัดกิจกรรมองค์กร"}
-],
+{title:"จัดงานสัมมนาองค์กร",service:"organization"},
+{title:"จัดกิจกรรมบริษัท",service:"organization"},
 
-translation:[
-{title:"แปลเอกสารธุรกิจ"},
-{title:"แปลเว็บไซต์"},
-{title:"แปลบทความ"}
-],
+{title:"แปลบทความภาษาอังกฤษ",service:"translation"},
+{title:"แปลเว็บไซต์ธุรกิจ",service:"translation"},
 
-mockup:[
-{title:"Creative Packaging Mockup"},
-{title:"Product Mockup"},
-{title:"Brand Mockup"}
+{title:"Product Mockup",service:"mockup"},
+{title:"Packaging Mockup",service:"mockup"}
+
 ]
-
-}
 
 
 const serviceNames = {
@@ -192,44 +205,75 @@ mockup:"Creative Mockup"
 }
 
 
-const container=document.getElementById("portfolioContainer")
+const icons = {
 
-Object.keys(services).forEach(key=>{
+seo:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
 
-const category=document.createElement("div")
-category.className="category"
+graphic:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2a10 10 0 1 0 0 20"/></svg>`,
 
-let html=`<h2>${serviceNames[key]}</h2>`
-html+=`<div class="grid">`
+poster:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>`,
 
-services[key].forEach(item=>{
-html+=`
-<div class="card">
+web:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>`,
+
+data:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" y1="20" x2="4" y2="10"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/></svg>`,
+
+marketing:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 11l18-5v12l-18-5z"/></svg>`,
+
+photo:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13"/><circle cx="12" cy="13" r="4"/></svg>`,
+
+organization:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M17 11v6"/></svg>`,
+
+translation:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16M4 12h8M4 20h16"/></svg>`,
+
+mockup:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg>`
+
+}
+
+
+const grid=document.getElementById("portfolioGrid")
+
+function render(){
+
+const search=document.getElementById("searchInput").value.toLowerCase()
+const filter=document.getElementById("serviceFilter").value
+
+grid.innerHTML=""
+
+servicesData.forEach(item=>{
+
+if(filter!=="all" && item.service!==filter)return
+
+if(!item.title.toLowerCase().includes(search))return
+
+const card=document.createElement("div")
+
+card.className="card"
+
+card.innerHTML=`
+
+${icons[item.service]}
+
 <h3>${item.title}</h3>
-<p>${serviceNames[key]}</p>
-</div>
+
+<div class="category">${serviceNames[item.service]}</div>
+
 `
-})
 
-html+=`</div>`
-category.innerHTML=html
-
-container.appendChild(category)
+grid.appendChild(card)
 
 })
+
+}
+
+document.getElementById("searchInput").addEventListener("input",render)
+document.getElementById("serviceFilter").addEventListener("change",render)
+
+render()
 
 
 function toggleMode(){
 
 document.body.classList.toggle("dark")
-
-const btn=document.querySelector(".toggle")
-
-if(document.body.classList.contains("dark")){
-btn.innerText="☀️ Light Mode"
-}else{
-btn.innerText="🌙 Dark Mode"
-}
 
 }
 

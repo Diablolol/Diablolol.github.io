@@ -1,283 +1,505 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ผลงานทั้งหมด | Portfolio</title>
-
-<meta name="description" content="รวมผลงานบริการ SEO Graphic Website Marketing Data Analytics และอื่นๆ">
-
-<style>
-
-:root{
---bg:#ffffff;
---text:#111;
---card:#f5f5f5;
---accent:#6366f1;
---border:#ddd;
-}
-
-body.dark{
---bg:#0f172a;
---text:#f1f5f9;
---card:#1e293b;
---border:#334155;
-}
-
-body{
-margin:0;
-font-family:system-ui;
-background:var(--bg);
-color:var(--text);
-transition:.3s;
-}
-
-header{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-border-bottom:1px solid var(--border);
-}
-
-h1{
-margin:0;
-font-size:22px;
-}
-
-.controls{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-input,select{
-padding:8px 10px;
-border-radius:6px;
-border:1px solid var(--border);
-}
-
-button{
-padding:8px 14px;
-border:none;
-border-radius:6px;
-background:var(--accent);
-color:white;
-cursor:pointer;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:30px 20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-}
-
-.card{
-background:var(--card);
-border-radius:12px;
-padding:20px;
-transition:.3s;
-cursor:pointer;
-border:1px solid var(--border);
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.icon{
-width:40px;
-height:40px;
-margin-bottom:10px;
-}
-
-.card h3{
-margin:10px 0 5px 0;
-}
-
-.category{
-font-size:13px;
-opacity:.7;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<h1>Portfolio ผลงานทั้งหมด</h1>
-
-<div class="controls">
-
-<input id="searchInput" type="text" placeholder="ค้นหาผลงาน...">
-
-<select id="serviceFilter">
-<option value="all">ทุกบริการ</option>
-<option value="seo">เขียนบทความ SEO</option>
-<option value="graphic">ออกแบบกราฟิก</option>
-<option value="poster">ทำโปสเตอร์</option>
-<option value="web">เขียนเว็บไซต์</option>
-<option value="data">Data Analytics</option>
-<option value="marketing">Marketing</option>
-<option value="photo">Photography / Video</option>
-<option value="organization">Organization</option>
-<option value="translation">แปลภาษา</option>
-<option value="mockup">Creative Mockup</option>
-</select>
-
-<button onclick="toggleMode()">🌙</button>
-
-</div>
-
-</header>
-
-
-<div class="container">
-
-<div class="grid" id="portfolioGrid"></div>
-
-</div>
-
-
-<script>
-
-const servicesData = [
-
-{title:"บทความ SEO ธุรกิจท่องเที่ยว",service:"seo"},
-{title:"บทความ SEO ร้านอาหาร",service:"seo"},
-
-{title:"ออกแบบ Banner Facebook",service:"graphic"},
-{title:"ออกแบบ Logo Branding",service:"graphic"},
-
-{title:"โปสเตอร์โปรโมทสินค้า",service:"poster"},
-{title:"โปสเตอร์งาน Event",service:"poster"},
-
-{title:"Corporate Website",service:"web"},
-{title:"Landing Page ธุรกิจ",service:"web"},
-
-{title:"Dashboard วิเคราะห์ยอดขาย",service:"data"},
-{title:"Data Visualization",service:"data"},
-
-{title:"Digital Marketing Strategy",service:"marketing"},
-{title:"Social Media Campaign",service:"marketing"},
-
-{title:"ถ่ายภาพสินค้า",service:"photo"},
-{title:"ตัดต่อวิดีโอโฆษณา",service:"photo"},
-
-{title:"จัดงานสัมมนาองค์กร",service:"organization"},
-{title:"จัดกิจกรรมบริษัท",service:"organization"},
-
-{title:"แปลบทความภาษาอังกฤษ",service:"translation"},
-{title:"แปลเว็บไซต์ธุรกิจ",service:"translation"},
-
-{title:"Product Mockup",service:"mockup"},
-{title:"Packaging Mockup",service:"mockup"}
-
-]
-
-
-const serviceNames = {
-
-seo:"เขียนบทความ SEO",
-graphic:"ออกแบบกราฟิก",
-poster:"ทำโปสเตอร์",
-web:"เขียนเว็บไซต์",
-data:"Data Analytics",
-marketing:"Marketing",
-photo:"Photography / Video",
-organization:"Organization",
-translation:"แปลภาษา",
-mockup:"Creative Mockup"
-
-}
-
-
-const icons = {
-
-seo:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-
-graphic:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2a10 10 0 1 0 0 20"/></svg>`,
-
-poster:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>`,
-
-web:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>`,
-
-data:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" y1="20" x2="4" y2="10"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/></svg>`,
-
-marketing:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 11l18-5v12l-18-5z"/></svg>`,
-
-photo:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13"/><circle cx="12" cy="13" r="4"/></svg>`,
-
-organization:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M17 11v6"/></svg>`,
-
-translation:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16M4 12h8M4 20h16"/></svg>`,
-
-mockup:`<svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg>`
-
-}
-
-
-const grid=document.getElementById("portfolioGrid")
-
-function render(){
-
-const search=document.getElementById("searchInput").value.toLowerCase()
-const filter=document.getElementById("serviceFilter").value
-
-grid.innerHTML=""
-
-servicesData.forEach(item=>{
-
-if(filter!=="all" && item.service!==filter)return
-
-if(!item.title.toLowerCase().includes(search))return
-
-const card=document.createElement("div")
-
-card.className="card"
-
-card.innerHTML=`
-
-${icons[item.service]}
-
-<h3>${item.title}</h3>
-
-<div class="category">${serviceNames[item.service]}</div>
-
-`
-
-grid.appendChild(card)
-
-})
-
-}
-
-document.getElementById("searchInput").addEventListener("input",render)
-document.getElementById("serviceFilter").addEventListener("change",render)
-
-render()
-
-
-function toggleMode(){
-
-document.body.classList.toggle("dark")
-
-}
-
-</script>
-
-</body>
+<!doctype html>
+<html lang="th" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Showcase</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&amp;family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    
+    :root {
+      --bg-primary: #0f0f1a;
+      --bg-secondary: #1a1a2e;
+      --text-primary: #ffffff;
+      --accent-primary: #6366f1;
+      --accent-secondary: #a855f7;
+    }
+    
+    .light-mode {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --text-primary: #1e293b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #a855f7;
+    }
+    
+    body {
+      font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      transition: all 0.4s ease;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .light-mode .glass-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+      border-color: var(--accent-primary);
+    }
+    
+    .category-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .light-mode .category-btn {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .category-btn:hover, .category-btn.active {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    }
+    
+    .icon-circle {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    
+    .glow-text {
+      text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    }
+    
+    .light-mode .glow-text {
+      text-shadow: none;
+    }
+    
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .toggle-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .light-mode .toggle-btn {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    
+    .toggle-btn:hover {
+      background: rgba(99, 102, 241, 0.3);
+      transform: scale(1.05);
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--accent-primary);
+      top: -100px;
+      left: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent-secondary);
+      bottom: -50px;
+      right: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    
+    .light-mode .orb {
+      opacity: 0.2;
+    }
+    
+    .work-item {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .work-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .work-item:hover::before {
+      left: 100%;
+    }
+    
+    .counter {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 4px;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full gradient-bg overflow-auto">
+  <!-- Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="relative z-10 min-h-full w-full">
+   <!-- Header -->
+   <header class="relative py-8 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex items-center justify-between mb-8">
+      <div class="flex items-center gap-3">
+       <div class="w-12 h-12 icon-circle rounded-2xl flex items-center justify-center floating">
+        <span class="text-2xl">✨</span>
+       </div><span class="text-lg font-semibold opacity-80">Portfolio</span>
+      </div><button id="themeToggle" class="toggle-btn px-5 py-2.5 rounded-full flex items-center gap-2 font-medium"> <span id="themeIcon">🌙</span> <span id="themeText" class="hidden sm:inline">Dark Mode</span> </button>
+     </div>
+     <div class="text-center py-8">
+      <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+       <span class="w-2 h-2 rounded-full bg-green-400 pulse-dot"></span> <span class="text-sm opacity-70">พร้อมรับงานใหม่</span>
+      </div>
+      <h1 id="pageTitle" class="text-4xl md:text-6xl font-bold mb-4 glow-text">ผลงานทั้งหมด</h1>
+      <p id="subtitle" class="text-lg md:text-xl opacity-60 max-w-2xl mx-auto">รวมผลงานและบริการทั้งหมดของเรา</p>
+     </div>
+    </div>
+   </header><!-- Category Filter -->
+   <section class="px-4 md:px-8 mb-8">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex flex-wrap justify-center gap-3" id="categoryFilter">
+      <!-- Categories will be inserted here -->
+     </div>
+    </div>
+   </section><!-- Portfolio Grid -->
+   <main class="px-4 md:px-8 pb-16">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="portfolioContainer">
+      <!-- Cards will be inserted here -->
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="py-8 px-4 border-t border-white/10">
+    <div class="max-w-7xl mx-auto text-center">
+     <p class="opacity-50 text-sm">© 2025 Portfolio Showcase • สร้างด้วย ❤️</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      page_title: 'ผลงานทั้งหมด',
+      subtitle: 'รวมผลงานและบริการทั้งหมดของเรา',
+      background_color: '#0f0f1a',
+      surface_color: '#1a1a2e',
+      text_color: '#ffffff',
+      primary_action_color: '#6366f1',
+      secondary_action_color: '#a855f7'
+    };
+
+    const services = {
+      seo: {
+        icon: '📝',
+        label: 'SEO Content',
+        color: 'from-blue-500 to-cyan-400',
+        items: [
+          { title: 'บทความ SEO ธุรกิจท่องเที่ยว', desc: 'เนื้อหาคุณภาพสูงสำหรับธุรกิจท่องเที่ยว' },
+          { title: 'บทความ SEO ร้านอาหาร', desc: 'เพิ่มอันดับร้านอาหารบน Google' },
+          { title: 'บทความ SEO เทคโนโลยี', desc: 'บทความเทคโนโลยีที่ติดอันดับ' }
+        ]
+      },
+      graphic: {
+        icon: '🎨',
+        label: 'Graphic Design',
+        color: 'from-pink-500 to-rose-400',
+        items: [
+          { title: 'ออกแบบ Banner Facebook', desc: 'แบนเนอร์สวยงามดึงดูดสายตา' },
+          { title: 'ออกแบบ Logo', desc: 'โลโก้ที่สื่อถึงแบรนด์ของคุณ' },
+          { title: 'ออกแบบ Branding', desc: 'แบรนด์ดิ้งครบวงจร' }
+        ]
+      },
+      poster: {
+        icon: '🖼️',
+        label: 'Poster Design',
+        color: 'from-orange-500 to-amber-400',
+        items: [
+          { title: 'โปสเตอร์โปรโมทสินค้า', desc: 'โปสเตอร์ขายดีโดนใจ' },
+          { title: 'โปสเตอร์อีเวนต์', desc: 'ดีไซน์งานอีเวนต์สุดปัง' },
+          { title: 'โปสเตอร์โฆษณา', desc: 'โฆษณาที่ได้ผลลัพธ์' }
+        ]
+      },
+      web: {
+        icon: '💻',
+        label: 'Web Development',
+        color: 'from-indigo-500 to-purple-400',
+        items: [
+          { title: 'เว็บไซต์บริษัท', desc: 'เว็บไซต์มืออาชีพสำหรับองค์กร' },
+          { title: 'Landing Page', desc: 'หน้า Landing ที่ Convert สูง' },
+          { title: 'E-commerce', desc: 'ระบบร้านค้าออนไลน์ครบวงจร' }
+        ]
+      },
+      data: {
+        icon: '📊',
+        label: 'Data Analytics',
+        color: 'from-emerald-500 to-teal-400',
+        items: [
+          { title: 'Dashboard วิเคราะห์ยอดขาย', desc: 'Dashboard ที่เข้าใจง่าย' },
+          { title: 'Data Visualization', desc: 'แสดงข้อมูลอย่างสวยงาม' },
+          { title: 'Business Analytics', desc: 'วิเคราะห์ธุรกิจเชิงลึก' }
+        ]
+      },
+      marketing: {
+        icon: '📈',
+        label: 'Digital Marketing',
+        color: 'from-violet-500 to-fuchsia-400',
+        items: [
+          { title: 'วางแผน Digital Marketing', desc: 'กลยุทธ์การตลาดที่ได้ผล' },
+          { title: 'SEO Strategy', desc: 'วางแผน SEO ระยะยาว' },
+          { title: 'Social Media Campaign', desc: 'แคมเปญโซเชียลมีเดีย' }
+        ]
+      },
+      photo: {
+        icon: '📸',
+        label: 'Photo & Video',
+        color: 'from-red-500 to-pink-400',
+        items: [
+          { title: 'ถ่ายภาพสินค้า', desc: 'ภาพสินค้าคุณภาพสูง' },
+          { title: 'ถ่ายวิดีโอโฆษณา', desc: 'วิดีโอโฆษณาที่น่าจดจำ' },
+          { title: 'ตัดต่อวิดีโอโปรโมท', desc: 'ตัดต่อวิดีโอมืออาชีพ' }
+        ]
+      },
+      organization: {
+        icon: '🎪',
+        label: 'Event Organization',
+        color: 'from-yellow-500 to-orange-400',
+        items: [
+          { title: 'จัดอีเวนต์บริษัท', desc: 'จัดงานครบวงจร' },
+          { title: 'จัดงานสัมมนา', desc: 'สัมมนาที่ประทับใจ' },
+          { title: 'จัดกิจกรรมองค์กร', desc: 'กิจกรรมสร้างทีม' }
+        ]
+      },
+      translation: {
+        icon: '🌐',
+        label: 'Translation',
+        color: 'from-sky-500 to-blue-400',
+        items: [
+          { title: 'แปลเอกสารธุรกิจ', desc: 'แปลเอกสารแม่นยำ' },
+          { title: 'แปลเว็บไซต์', desc: 'Localization เว็บไซต์' },
+          { title: 'แปลบทความ', desc: 'แปลบทความคุณภาพ' }
+        ]
+      }
+    };
+
+    let isDarkMode = true;
+    let activeCategory = 'all';
+
+    function toggleMode() {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('light-mode', !isDarkMode);
+      document.getElementById('themeIcon').textContent = isDarkMode ? '🌙' : '☀️';
+      document.getElementById('themeText').textContent = isDarkMode ? 'Dark Mode' : 'Light Mode';
+    }
+
+    function renderCategories() {
+      const container = document.getElementById('categoryFilter');
+      
+      let html = `
+        <button class="category-btn px-5 py-2.5 rounded-full font-medium ${activeCategory === 'all' ? 'active' : ''}" 
+                onclick="filterCategory('all')">
+          ✨ ทั้งหมด
+        </button>
+      `;
+      
+      Object.entries(services).forEach(([key, value]) => {
+        html += `
+          <button class="category-btn px-5 py-2.5 rounded-full font-medium ${activeCategory === key ? 'active' : ''}" 
+                  onclick="filterCategory('${key}')">
+            ${value.icon} ${value.label}
+          </button>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function filterCategory(category) {
+      activeCategory = category;
+      renderCategories();
+      renderPortfolio();
+    }
+
+    function renderPortfolio() {
+      const container = document.getElementById('portfolioContainer');
+      let html = '';
+      let index = 0;
+      
+      const categoriesToRender = activeCategory === 'all' 
+        ? Object.entries(services) 
+        : [[activeCategory, services[activeCategory]]];
+      
+      categoriesToRender.forEach(([key, category]) => {
+        category.items.forEach((item) => {
+          const staggerClass = `stagger-${(index % 5) + 1}`;
+          html += `
+            <div class="glass-card rounded-3xl p-6 work-item fade-in ${staggerClass}" style="opacity: 0;">
+              <div class="flex items-start justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl shadow-lg">
+                  ${category.icon}
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/10">
+                  ${category.label}
+                </span>
+              </div>
+              
+              <h3 class="text-lg font-semibold mb-2 leading-tight">${item.title}</h3>
+              <p class="text-sm opacity-60 mb-4">${item.desc}</p>
+              
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                  <span class="text-xs opacity-50">พร้อมให้บริการ</span>
+                </div>
+                <button class="px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r ${category.color} hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
+                  ดูเพิ่มเติม
+                </button>
+              </div>
+            </div>
+          `;
+          index++;
+        });
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function updateTotalWorks() {
+      let total = 0;
+      Object.values(services).forEach(cat => {
+        total += cat.items.length;
+      });
+    }
+
+    async function onConfigChange(config) {
+      const pageTitle = document.getElementById('pageTitle');
+      const subtitle = document.getElementById('subtitle');
+      
+      if (pageTitle) {
+        pageTitle.textContent = config.page_title || defaultConfig.page_title;
+      }
+      
+      if (subtitle) {
+        subtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      }
+      
+      document.documentElement.style.setProperty('--bg-primary', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--bg-secondary', config.surface_color || defaultConfig.surface_color);
+      document.documentElement.style.setProperty('--text-primary', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--accent-primary', config.primary_action_color || defaultConfig.primary_action_color);
+      document.documentElement.style.setProperty('--accent-secondary', config.secondary_action_color || defaultConfig.secondary_action_color);
+    }
+
+    // Initialize
+    document.getElementById('themeToggle').addEventListener('click', toggleMode);
+    renderCategories();
+    renderPortfolio();
+    updateTotalWorks();
+
+  </script>
+ <script>(function(){
+  function c(){
+    var b=a.contentDocument||a.contentWindow.document;if(b){
+      var d=b.createElement('script');
+      d.innerHTML="window.__CF$cv$params={r:'9da1c17eb040d014',t:'MTc3MzEzOTc5OS4wMDAwMDA='};
+    var a=document.createElement('script');a.nonce='';
+      a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';
+      document.getElementsByTagName('head')[0].appendChild(a);
+      ";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');
+      a.height=1;
+      a.width=1;
+      a.style.position='absolute';
+      a.style.top=0;
+      a.style.left=0;
+      a.style.border='none';
+      a.style.visibility='hidden';
+      document.body.appendChild(a);
+      if('loading'!==document.readyState)c();
+      else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
+      else{var e=document.onreadystatechange||function(){};
+           document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}
+      }
+    }
+  })();
+ </script>
+ </body>
 </html>

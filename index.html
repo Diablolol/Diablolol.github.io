@@ -1,0 +1,1147 @@
+<!doctype html>
+<html lang="th" class="h-full scroll-smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio - บริการเขียนบทความ SEO, ออกแบบกราฟิก, พัฒนาเว็บไซต์, Data Analytics, Marketing และอื่นๆ">
+  <meta name="keywords" content="SEO, Web Development, Graphic Design, Digital Marketing, Data Analytics, Photography">
+  <meta name="author" content="Creative Studio">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Creative Studio - Portfolio">
+  <meta property="og:description" content="บริการครบวงจรด้าน Digital - SEO, Web Development, Design, Marketing">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Creative Studio | Portfolio</title>
+  <link rel="canonical" href="https://yourwebsite.com">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Noto+Sans+Thai:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1a2332',
+                            950: '#0d1117'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        html { scroll-behavior: smooth; }
+        .nav-active { color: #60a5fa; border-bottom: 2px solid #60a5fa; }
+        .tab-active { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15); }
+        .skill-badge:hover { transform: scale(1.05); }
+        .gradient-text { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(148, 163, 184, 0.1); }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+    </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-950 text-slate-200 font-sans">
+  <div id="app-wrapper" class="h-full w-full overflow-auto"><!-- Navigation Bar -->
+   <header role="banner" class="fixed top-0 left-0 right-0 z-50 glass-card">
+    <nav role="navigation" aria-label="Main navigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16"><a href="#home" class="flex items-center gap-2" aria-label="Home">
+       <svg class="w-8 h-8 text-blue-400" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2L2 9L16 16L30 9L16 2Z" fill="currentColor" opacity="0.8" /> <path d="M2 23L16 30L30 23" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <path d="M2 16L16 23L30 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+       </svg><span id="nav-title" class="text-xl font-bold gradient-text">Creative Studio</span> </a>
+      <ul class="hidden md:flex items-center gap-1" role="menubar">
+       <li role="none"><a role="menuitem" href="#home" class="nav-link px-4 py-2 text-sm font-medium hover:text-blue-400 transition-colors nav-active">หน้าแรก</a></li>
+       <li role="none"><a role="menuitem" href="#services" class="nav-link px-4 py-2 text-sm font-medium hover:text-blue-400 transition-colors">บริการ</a></li>
+       <li role="none"><a role="menuitem" href="#skills" class="nav-link px-4 py-2 text-sm font-medium hover:text-blue-400 transition-colors">ทักษะ</a></li>
+       <li role="none"><a role="menuitem" href="#portfolio" class="nav-link px-4 py-2 text-sm font-medium hover:text-blue-400 transition-colors">ผลงาน</a></li>
+       <li role="none"><a role="menuitem" href="#contact" class="nav-link px-4 py-2 text-sm font-medium hover:text-blue-400 transition-colors">ติดต่อ</a></li>
+      </ul><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-800 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <ul class="flex flex-col gap-2">
+       <li><a href="#home" class="mobile-nav-link block px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">หน้าแรก</a></li>
+       <li><a href="#services" class="mobile-nav-link block px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">บริการ</a></li>
+       <li><a href="#skills" class="mobile-nav-link block px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">ทักษะ</a></li>
+       <li><a href="#portfolio" class="mobile-nav-link block px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">ผลงาน</a></li>
+       <li><a href="#contact" class="mobile-nav-link block px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">ติดต่อ</a></li>
+      </ul>
+     </div>
+    </nav>
+   </header>
+   <main role="main" id="main-content"><!-- Hero Section -->
+    <section id="home" aria-labelledby="hero-heading" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+     <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+     </div>
+     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="float-animation mb-8">
+       <svg class="w-24 h-24 mx-auto text-blue-400" viewbox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="48" cy="48" r="40" stroke="currentColor" stroke-width="2" opacity="0.3" /> <circle cx="48" cy="48" r="30" stroke="currentColor" stroke-width="2" opacity="0.5" /> <circle cx="48" cy="48" r="20" fill="currentColor" opacity="0.8" /> <path d="M48 28L52 44H68L55 54L59 70L48 60L37 70L41 54L28 44H44L48 28Z" fill="white" />
+       </svg>
+      </div>
+      <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 animate-fade-in"><span class="text-slate-100" id="hero-title">สร้างสรรค์ผลงาน</span> <br><span class="gradient-text">ที่โดดเด่นและมีคุณภาพ</span></h1>
+      <p id="hero-subtitle" class="text-xl sm:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto animate-fade-in stagger-1">บริการครบวงจรด้าน Digital Marketing, Web Development, Graphic Design และอื่นๆ อีกมากมาย</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-2"><a href="#services" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25"> ดูบริการทั้งหมด 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a> <a href="#contact" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-600 hover:border-blue-400 hover:bg-slate-800/50 text-slate-200 font-semibold rounded-xl transition-all duration-300"> ติดต่อเรา </a>
+      </div>
+      <div class="mt-16 animate-fade-in stagger-3">
+       <p class="text-sm text-slate-500 mb-4">เครื่องมือที่ใช้</p>
+       <div class="flex flex-wrap justify-center gap-6 opacity-60"><!-- WordPress -->
+        <svg class="w-8 h-8" viewbox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="14" /> <path d="M8 16c0-4.4 3.6-8 8-8s8 3.6 8 8" /> <path d="M16 10v12M12 16h8" />
+        </svg><!-- React -->
+        <svg class="w-8 h-8" viewbox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="4" /> <ellipse cx="16" cy="16" rx="10" ry="6" /> <ellipse cx="16" cy="16" rx="10" ry="6" transform="rotate(60 16 16)" /> <ellipse cx="16" cy="16" rx="10" ry="6" transform="rotate(120 16 16)" />
+        </svg><!-- Node.js -->
+        <svg class="w-8 h-8" viewbox="0 0 32 32" fill="currentColor"><path d="M16 2L4 9v14l12 6 12-6V9L16 2z" opacity="0.7" /> <path d="M16 6L8 10v8l8 4 8-4v-8l-8-4z" />
+        </svg>
+       </div>
+      </div>
+     </div><a href="#services" class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" aria-label="Scroll to services">
+      <svg class="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg></a>
+    </section><!-- Services Section -->
+    <section id="services" aria-labelledby="services-heading" class="py-24 bg-slate-900/50">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-16">
+       <h2 id="services-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"><span class="gradient-text">บริการของเรา</span></h2>
+       <p class="text-slate-400 text-lg max-w-2xl mx-auto">บริการครบวงจรที่ตอบโจทย์ทุกความต้องการด้าน Digital</p>
+      </header><!-- Service Tabs -->
+      <div role="tablist" aria-label="Service categories" class="flex flex-wrap justify-center gap-2 mb-12"><button role="tab" aria-selected="true" aria-controls="panel-all" id="tab-all" class="service-tab tab-active px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"> ทั้งหมด </button> <button role="tab" aria-selected="false" aria-controls="panel-content" id="tab-content" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Content </button> <button role="tab" aria-selected="false" aria-controls="panel-design" id="tab-design" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Design </button> <button role="tab" aria-selected="false" aria-controls="panel-development" id="tab-development" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Development </button> <button role="tab" aria-selected="false" aria-controls="panel-marketing" id="tab-marketing" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Marketing </button> <button role="tab" aria-selected="false" aria-controls="panel-media" id="tab-media" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Media </button> <button role="tab" aria-selected="false" aria-controls="panel-other" id="tab-other" class="service-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> อื่นๆ </button>
+      </div><!-- Service Cards -->
+      <div id="services-grid" role="tabpanel" aria-labelledby="tab-all" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- SEO Content Writing -->
+       <article data-category="content" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /> <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">เขียนบทความ SEO</h3>
+        <p class="text-slate-400 text-sm mb-4">สร้างคอนเทนต์คุณภาพสูงที่ช่วยเพิ่มอันดับบนเครื่องมือค้นหา</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Keyword Research</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> On-page Optimization</li>
+        </ul>
+       </article><!-- Graphic Design -->
+       <article data-category="design" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">ออกแบบกราฟิก</h3>
+        <p class="text-slate-400 text-sm mb-4">สร้างสรรค์งานกราฟิกที่สวยงามและตรงกับ Brand Identity</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Logo Design</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Social Media Assets</li>
+        </ul>
+       </article><!-- Poster Design -->
+       <article data-category="design" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" /> <line x1="9" y1="3" x2="9" y2="21" /> <line x1="3" y1="9" x2="21" y2="9" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">ทำโปสเตอร์</h3>
+        <p class="text-slate-400 text-sm mb-4">ออกแบบโปสเตอร์ที่ดึงดูดสายตาและสื่อสารได้ชัดเจน</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Event Poster</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Promotional Material</li>
+        </ul>
+       </article><!-- Web Development -->
+       <article data-category="development" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6" /> <polyline points="8 6 2 12 8 18" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">พัฒนาเว็บไซต์</h3>
+        <p class="text-slate-400 text-sm mb-4">สร้างเว็บไซต์ที่ตอบโจทย์ทุกรูปแบบธุรกิจ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Static / Dynamic Web</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> E-commerce / Marketplace</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Web Application</li>
+        </ul>
+       </article><!-- Data Analytics -->
+       <article data-category="marketing" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10" /> <line x1="12" y1="20" x2="12" y2="4" /> <line x1="6" y1="20" x2="6" y2="14" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Data Analytics</h3>
+        <p class="text-slate-400 text-sm mb-4">วิเคราะห์ข้อมูลเชิงลึกเพื่อตัดสินใจทางธุรกิจ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Dashboard &amp; Reports</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Performance Tracking</li>
+        </ul>
+       </article><!-- Marketing -->
+       <article data-category="marketing" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Marketing</h3>
+        <p class="text-slate-400 text-sm mb-4">วางแผนและดำเนินการแคมเปญการตลาดดิจิทัล</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Social Media Marketing</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Paid Advertising</li>
+        </ul>
+       </article><!-- Photography -->
+       <article data-category="media" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /> <circle cx="12" cy="13" r="4" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Photography &amp; Video</h3>
+        <p class="text-slate-400 text-sm mb-4">ถ่ายภาพ ถ่ายวิดีโอ และตัดต่อวิดีโออย่างมืออาชีพ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Product Photography</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Video Editing</li>
+        </ul>
+       </article><!-- Organization -->
+       <article data-category="other" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /> <line x1="16" y1="2" x2="16" y2="6" /> <line x1="8" y1="2" x2="8" y2="6" /> <line x1="3" y1="10" x2="21" y2="10" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Organization</h3>
+        <p class="text-slate-400 text-sm mb-4">จัดระเบียบและบริหารจัดการงานอย่างมีประสิทธิภาพ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Project Management</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Workflow Optimization</li>
+        </ul>
+       </article><!-- Translation -->
+       <article data-category="other" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <line x1="2" y1="12" x2="22" y2="12" /> <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">แปลภาษา</h3>
+        <p class="text-slate-400 text-sm mb-4">แปลเอกสารและคอนเทนต์อย่างถูกต้องและเป็นธรรมชาติ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> TH-EN / EN-TH</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Localization</li>
+        </ul>
+       </article><!-- Creative -->
+       <article data-category="other" class="service-card glass-card rounded-2xl p-6 transition-all duration-300">
+        <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center mb-4">
+         <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Creative</h3>
+        <p class="text-slate-400 text-sm mb-4">สร้างสรรค์ไอเดียและแนวคิดใหม่ๆ</p>
+        <ul class="text-xs text-slate-500 space-y-1">
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Concept Development</li>
+         <li class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg> Brand Strategy</li>
+        </ul>
+       </article>
+      </div>
+     </div>
+    </section><!-- Skills Section -->
+    <section id="skills" aria-labelledby="skills-heading" class="py-24">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-16">
+       <h2 id="skills-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"><span class="gradient-text">ทักษะและเครื่องมือ</span></h2>
+       <p class="text-slate-400 text-lg max-w-2xl mx-auto">เครื่องมือและเทคโนโลยีที่ใช้ในการสร้างสรรค์ผลงาน</p>
+      </header><!-- Skills Tabs -->
+      <div role="tablist" aria-label="Skill categories" class="flex flex-wrap justify-center gap-2 mb-12"><button role="tab" aria-selected="true" aria-controls="skills-panel-all" id="skills-tab-all" class="skills-tab tab-active px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"> ทั้งหมด </button> <button role="tab" aria-selected="false" aria-controls="skills-panel-dev" id="skills-tab-dev" class="skills-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Development </button> <button role="tab" aria-selected="false" aria-controls="skills-panel-design" id="skills-tab-design" class="skills-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Design </button> <button role="tab" aria-selected="false" aria-controls="skills-panel-marketing" id="skills-tab-marketing" class="skills-tab px-6 py-3 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700 transition-all duration-300"> Marketing </button>
+      </div><!-- Skills Grid -->
+      <div id="skills-grid" role="tabpanel" aria-labelledby="skills-tab-all" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"><!-- Development Skills -->
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-blue-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" viewbox="0 0 40 40" fill="currentColor"><path d="M20 4C11.164 4 4 11.164 4 20s7.164 16 16 16 16-7.164 16-16S28.836 4 20 4zm0 28.8c-7.07 0-12.8-5.73-12.8-12.8S12.93 7.2 20 7.2 32.8 12.93 32.8 20 27.07 32.8 20 32.8z" /> <circle cx="20" cy="20" r="6" opacity="0.6" />
+        </svg><span class="text-xs font-medium">WordPress</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-cyan-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-cyan-400" viewbox="0 0 40 40" fill="currentColor"><circle cx="20" cy="20" r="4" /> <ellipse cx="20" cy="20" rx="16" ry="6" stroke="currentColor" fill="none" stroke-width="2" /> <ellipse cx="20" cy="20" rx="16" ry="6" stroke="currentColor" fill="none" stroke-width="2" transform="rotate(60 20 20)" /> <ellipse cx="20" cy="20" rx="16" ry="6" stroke="currentColor" fill="none" stroke-width="2" transform="rotate(120 20 20)" />
+        </svg><span class="text-xs font-medium">React</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-green-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-green-400" viewbox="0 0 40 40" fill="currentColor"><path d="M20 4l16 28H4L20 4z" opacity="0.3" /> <path d="M20 10l10 18H10L20 10z" />
+        </svg><span class="text-xs font-medium">Node.js</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-slate-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-slate-300" viewbox="0 0 40 40" fill="currentColor"><path d="M20 4L4 12v16l16 8 16-8V12L20 4z" opacity="0.3" /> <path d="M20 8l12 6v12l-12 6-12-6V14l12-6z" />
+        </svg><span class="text-xs font-medium">Next.js</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-yellow-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-yellow-400" viewbox="0 0 40 40" fill="currentColor"><path d="M8 8h10v24H8z" /> <path d="M22 8h10v24c0-13.255-4.477-24-10-24z" opacity="0.7" />
+        </svg><span class="text-xs font-medium">Python</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-orange-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-orange-400" viewbox="0 0 40 40" fill="currentColor"><path d="M6 6h28v28H6z" opacity="0.2" /> <path d="M10 14l6 6-6 6M18 26h12" />
+        </svg><span class="text-xs font-medium">HTML</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-blue-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-300" viewbox="0 0 40 40" fill="currentColor"><path d="M8 4l3 32 9 4 9-4 3-32H8z" opacity="0.3" /> <path d="M20 8v28l7-3 2-25H20z" />
+        </svg><span class="text-xs font-medium">CSS</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-yellow-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-yellow-300" viewbox="0 0 40 40" fill="currentColor"><rect x="6" y="6" width="28" height="28" rx="4" /> <text x="20" y="28" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a1a1a">
+          JS
+         </text>
+        </svg><span class="text-xs font-medium">JavaScript</span>
+       </div>
+       <div data-skill-category="dev" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-teal-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-teal-400" viewbox="0 0 40 40" fill="currentColor"><path d="M20 4L4 10l2 20 14 6 14-6 2-20L20 4z" opacity="0.3" /> <path d="M20 8l-12 4.5 1.5 15L20 32l10.5-4.5 1.5-15L20 8z" />
+        </svg><span class="text-xs font-medium">Tailwind CSS</span>
+       </div><!-- Design Skills -->
+       <div data-skill-category="design" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-purple-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-purple-400" viewbox="0 0 40 40" fill="currentColor"><rect x="4" y="8" width="32" height="24" rx="2" opacity="0.3" /> <path d="M8 12h8v8H8zM8 22h24v6H8zM18 12h14v8H18z" />
+        </svg><span class="text-xs font-medium">Premiere Pro</span>
+       </div>
+       <div data-skill-category="design" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-pink-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-pink-400" viewbox="0 0 40 40" fill="currentColor"><rect x="6" y="6" width="28" height="28" rx="6" /> <path d="M14 14h4l2 12-4-4-4 4 2-12zM22 14h4v8l-4-4v-4z" fill="#1a1a1a" />
+        </svg><span class="text-xs font-medium">CapCut</span>
+       </div>
+       <div data-skill-category="design" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-cyan-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-cyan-300" viewbox="0 0 40 40" fill="currentColor"><circle cx="20" cy="20" r="16" /> <circle cx="20" cy="20" r="10" fill="#1a1a1a" /> <circle cx="20" cy="20" r="4" />
+        </svg><span class="text-xs font-medium">Canva</span>
+       </div>
+       <div data-skill-category="design" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-orange-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-orange-300" viewbox="0 0 40 40" fill="currentColor"><rect x="6" y="10" width="28" height="20" rx="2" opacity="0.3" /> <rect x="10" y="14" width="8" height="6" /> <rect x="10" y="22" width="20" height="4" /> <rect x="20" y="14" width="10" height="6" opacity="0.6" />
+        </svg><span class="text-xs font-medium">PowerPoint</span>
+       </div>
+       <div data-skill-category="design" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-rose-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-rose-400" viewbox="0 0 40 40" fill="currentColor"><rect x="8" y="4" width="24" height="32" rx="2" opacity="0.3" /> <circle cx="20" cy="16" r="6" /> <path d="M12 28h16v4H12z" />
+        </svg><span class="text-xs font-medium">Figma</span>
+       </div><!-- Marketing Skills -->
+       <div data-skill-category="marketing" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-green-400/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-green-300" viewbox="0 0 40 40" fill="currentColor"><rect x="4" y="4" width="32" height="32" rx="2" opacity="0.3" /> <rect x="8" y="8" width="10" height="8" /> <rect x="22" y="8" width="10" height="8" opacity="0.6" /> <rect x="8" y="20" width="24" height="12" />
+        </svg><span class="text-xs font-medium">Excel</span>
+       </div>
+       <div data-skill-category="marketing" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-blue-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-400" viewbox="0 0 40 40" fill="currentColor"><circle cx="20" cy="20" r="16" opacity="0.3" /> <path d="M20 8v12h10" stroke="currentColor" stroke-width="3" fill="none" /> <text x="20" y="34" font-size="8" text-anchor="middle">
+          Ads
+         </text>
+        </svg><span class="text-xs font-medium">Google Ads</span>
+       </div>
+       <div data-skill-category="marketing" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-orange-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-orange-400" viewbox="0 0 40 40" fill="currentColor"><path d="M8 28l6-16 6 10 6-6 6 12H8z" opacity="0.3" /> <circle cx="14" cy="12" r="4" /> <circle cx="20" cy="22" r="3" /> <circle cx="26" cy="16" r="3" />
+        </svg><span class="text-xs font-medium">Analytics</span>
+       </div>
+       <div data-skill-category="marketing" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-amber-500/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-amber-400" viewbox="0 0 40 40" fill="currentColor"><rect x="6" y="6" width="28" height="28" rx="4" opacity="0.3" /> <path d="M12 20h4v8h-4zM18 14h4v14h-4zM24 18h4v10h-4z" />
+        </svg><span class="text-xs font-medium">SEMrush</span>
+       </div>
+       <div data-skill-category="marketing" class="skill-badge glass-card rounded-xl p-4 text-center hover:border-blue-600/50 transition-all duration-300 cursor-default">
+        <svg class="w-10 h-10 mx-auto mb-2 text-blue-500" viewbox="0 0 40 40" fill="currentColor"><circle cx="20" cy="20" r="16" /> <text x="20" y="26" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a1a1a">
+          f
+         </text>
+        </svg><span class="text-xs font-medium">Meta Ads</span>
+       </div>
+      </div>
+     </div>
+    </section><!-- Portfolio Section -->
+    <section id="portfolio" aria-labelledby="portfolio-heading" class="py-24 bg-slate-900/50">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-16">
+       <h2 id="portfolio-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"><span class="gradient-text">ผลงานที่ผ่านมา</span></h2>
+       <p class="text-slate-400 text-lg max-w-2xl mx-auto">ตัวอย่างผลงานที่เราภูมิใจนำเสนอ</p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+       <article class="group glass-card rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300">
+        <div class="aspect-video bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
+         <svg class="w-16 h-16 text-blue-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="48" height="48" rx="4" /> <path d="M8 20h48M20 8v48" />
+         </svg>
+        </div>
+        <div class="p-6"><span class="text-xs font-medium text-blue-400 uppercase tracking-wider">Web Development</span>
+         <h3 class="text-lg font-semibold mt-2 mb-2">E-commerce Platform</h3>
+         <p class="text-slate-400 text-sm">ระบบร้านค้าออนไลน์ครบวงจรพร้อมระบบชำระเงิน</p>
+        </div>
+       </article>
+       <article class="group glass-card rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300">
+        <div class="aspect-video bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
+         <svg class="w-16 h-16 text-purple-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="20" /> <path d="M32 20v12l8 8" />
+         </svg>
+        </div>
+        <div class="p-6"><span class="text-xs font-medium text-purple-400 uppercase tracking-wider">Graphic Design</span>
+         <h3 class="text-lg font-semibold mt-2 mb-2">Brand Identity</h3>
+         <p class="text-slate-400 text-sm">ออกแบบอัตลักษณ์แบรนด์ตั้งแต่โลโก้จนถึงสื่อทุกชิ้น</p>
+        </div>
+       </article>
+       <article class="group glass-card rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300">
+        <div class="aspect-video bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center">
+         <svg class="w-16 h-16 text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 48l8-16 8 8 8-16 8 24" /> <line x1="12" y1="52" x2="52" y2="52" />
+         </svg>
+        </div>
+        <div class="p-6"><span class="text-xs font-medium text-emerald-400 uppercase tracking-wider">Marketing</span>
+         <h3 class="text-lg font-semibold mt-2 mb-2">Digital Campaign</h3>
+         <p class="text-slate-400 text-sm">แคมเปญโฆษณาที่เพิ่มยอดขายกว่า 200%</p>
+        </div>
+       </article>
+      </div>
+      <div class="text-center mt-12"><button id="view-all-portfolio" class="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 hover:border-blue-400 hover:bg-slate-800/50 text-slate-200 font-semibold rounded-xl transition-all duration-300"> ดูผลงานทั้งหมด 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></button>
+      </div>
+     </div>
+    </section><!-- Contact Section -->
+    <section id="contact" aria-labelledby="contact-heading" class="py-24">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-16">
+       <h2 id="contact-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"><span class="gradient-text">ติดต่อเรา</span></h2>
+       <p class="text-slate-400 text-lg max-w-2xl mx-auto">พร้อมรับฟังและให้คำปรึกษาสำหรับโปรเจกต์ของคุณ</p>
+      </header>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12"><!-- Contact Info -->
+       <div class="space-y-8">
+        <div class="glass-card rounded-2xl p-6">
+         <h3 class="text-xl font-semibold mb-6">ข้อมูลการติดต่อ</h3>
+         <div class="space-y-4"><a href="mailto:contact@example.com" class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-800/50 transition-colors group">
+           <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm text-slate-400">Email</p>
+            <p id="contact-email-display" class="font-medium">contact@example.com</p>
+           </div></a> <a href="tel:+66123456789" class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-800/50 transition-colors group">
+           <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
+            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm text-slate-400">Phone</p>
+            <p id="contact-phone-display" class="font-medium">+66 XX XXX XXXX</p>
+           </div></a>
+          <div class="flex items-center gap-4 p-4 rounded-xl">
+           <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm text-slate-400">Location</p>
+            <p class="font-medium">Bangkok, Thailand</p>
+           </div>
+          </div>
+         </div>
+        </div><!-- Social Links -->
+        <div class="glass-card rounded-2xl p-6">
+         <h3 class="text-xl font-semibold mb-6">ช่องทางโซเชียล</h3>
+         <div class="flex gap-4"><a href="#" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-800 hover:bg-blue-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Facebook">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+           </svg></a> <a href="#" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-800 hover:bg-sky-500 rounded-xl flex items-center justify-center transition-colors" aria-label="Twitter">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+           </svg></a> <a href="#" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-800 hover:bg-pink-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Instagram">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+           </svg></a> <a href="#" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-800 hover:bg-blue-700 rounded-xl flex items-center justify-center transition-colors" aria-label="LinkedIn">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+           </svg></a> <a href="#" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-800 hover:bg-green-500 rounded-xl flex items-center justify-center transition-colors" aria-label="Line">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+           </svg></a>
+         </div>
+        </div>
+       </div><!-- Contact Form -->
+       <div class="glass-card rounded-2xl p-6">
+        <h3 class="text-xl font-semibold mb-6">ส่งข้อความถึงเรา</h3>
+        <form id="contact-form" class="space-y-4">
+         <div><label for="name" class="block text-sm font-medium text-slate-300 mb-2">ชื่อ</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 transition-colors" placeholder="ชื่อของคุณ">
+         </div>
+         <div><label for="email" class="block text-sm font-medium text-slate-300 mb-2">อีเมล</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 transition-colors" placeholder="your@email.com">
+         </div>
+         <div><label for="subject" class="block text-sm font-medium text-slate-300 mb-2">หัวข้อ</label> <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 transition-colors" placeholder="หัวข้อที่ต้องการติดต่อ">
+         </div>
+         <div><label for="message" class="block text-sm font-medium text-slate-300 mb-2">ข้อความ</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="รายละเอียดที่ต้องการติดต่อ"></textarea>
+         </div><button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25"> ส่งข้อความ </button>
+        </form>
+        <div id="form-success" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400 text-center">
+         ✓ ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็ว
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer role="contentinfo" class="py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div class="md:col-span-2"><a href="#home" class="flex items-center gap-2 mb-4">
+        <svg class="w-8 h-8 text-blue-400" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2L2 9L16 16L30 9L16 2Z" fill="currentColor" opacity="0.8" /> <path d="M2 23L16 30L30 23" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <path d="M2 16L16 23L30 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg><span id="footer-title" class="text-xl font-bold gradient-text">Creative Studio</span> </a>
+       <p class="text-slate-400 text-sm max-w-md">บริการครบวงจรด้าน Digital Marketing, Web Development และ Graphic Design ที่จะช่วยให้ธุรกิจของคุณเติบโตอย่างยั่งยืน</p>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Quick Links</h4>
+       <nav aria-label="Footer navigation">
+        <ul class="space-y-2 text-sm text-slate-400">
+         <li><a href="#home" class="hover:text-blue-400 transition-colors">หน้าแรก</a></li>
+         <li><a href="#services" class="hover:text-blue-400 transition-colors">บริการ</a></li>
+         <li><a href="#skills" class="hover:text-blue-400 transition-colors">ทักษะ</a></li>
+         <li><a href="#portfolio" class="hover:text-blue-400 transition-colors">ผลงาน</a></li>
+         <li><a href="#contact" class="hover:text-blue-400 transition-colors">ติดต่อ</a></li>
+        </ul>
+       </nav>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Legal</h4>
+       <ul class="space-y-2 text-sm text-slate-400">
+        <li><a href="#privacy" id="privacy-link" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+        <li><a href="#terms" id="terms-link" class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-slate-500">© <span id="copyright-year">2024</span> Creative Studio. All rights reserved.</p>
+      <p class="text-sm text-slate-500">Made with ❤️ in Bangkok, Thailand</p>
+     </div>
+    </div>
+   </footer><!-- Privacy Policy Modal -->
+   <div id="privacy-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="glass-card rounded-2xl max-w-2xl w-full max-h-[80%] overflow-auto p-8">
+     <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold">Privacy Policy</h2><button id="close-privacy" class="p-2 hover:bg-slate-800 rounded-lg transition-colors" aria-label="Close">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+     </div>
+     <div class="text-slate-400 space-y-4">
+      <p>เนื้อหา Privacy Policy จะถูกเพิ่มในภายหลัง...</p>
+      <p class="text-sm text-slate-500">Last updated: Coming soon</p>
+     </div>
+    </div>
+   </div><!-- Terms of Service Modal -->
+   <div id="terms-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="glass-card rounded-2xl max-w-2xl w-full max-h-[80%] overflow-auto p-8">
+     <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold">Terms of Service</h2><button id="close-terms" class="p-2 hover:bg-slate-800 rounded-lg transition-colors" aria-label="Close">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+     </div>
+     <div class="text-slate-400 space-y-4">
+      <p>เนื้อหา Terms of Service จะถูกเพิ่มในภายหลัง...</p>
+      <p class="text-sm text-slate-500">Last updated: Coming soon</p>
+     </div>
+    </div>
+   </div><!-- Portfolio Details Modal -->
+   <div id="portfolio-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+    <div class="glass-card rounded-2xl max-w-4xl w-full my-8 p-8">
+     <div class="flex justify-between items-center mb-6">
+      <h2 id="portfolio-modal-title" class="text-3xl font-bold">ผลงานทั้งหมด</h2><button id="close-portfolio" class="p-2 hover:bg-slate-800 rounded-lg transition-colors" aria-label="Close">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+     </div><!-- Portfolio Grid -->
+     <div id="portfolio-details-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- E-commerce Platform -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="ecommerce">
+       <div class="aspect-video bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-blue-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="48" height="48" rx="4" /> <path d="M8 20h48M20 8v48" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-blue-400 uppercase tracking-wider">Web Development</span> <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs text-blue-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">E-commerce Platform</h3>
+        <p class="text-slate-400 text-sm">ระบบร้านค้าออนไลน์ครบวงจรพร้อมระบบชำระเงิน</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">React</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Node.js</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Payment</span>
+         </div>
+        </div>
+       </div>
+      </article><!-- Brand Identity -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="branding">
+       <div class="aspect-video bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-purple-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="20" /> <circle cx="32" cy="32" r="6" /> <circle cx="32" cy="32" r="2" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-purple-400 uppercase tracking-wider">Graphic Design</span> <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">Brand Identity</h3>
+        <p class="text-slate-400 text-sm">ออกแบบอัตลักษณ์แบรนด์ตั้งแต่โลโก้จนถึงสื่อทุกชิ้น</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Figma</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Logo</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Identity</span>
+         </div>
+        </div>
+       </div>
+      </article><!-- Digital Campaign -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="campaign">
+       <div class="aspect-video bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 48l8-16 8 8 8-16 8 24H16z" /> <line x1="12" y1="52" x2="52" y2="52" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-emerald-400 uppercase tracking-wider">Marketing</span> <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">Digital Campaign</h3>
+        <p class="text-slate-400 text-sm">แคมเปญโฆษณาที่เพิ่มยอดขายกว่า 200%</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Google Ads</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Meta Ads</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Analytics</span>
+         </div>
+        </div>
+       </div>
+      </article><!-- Website Redesign -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="redesign">
+       <div class="aspect-video bg-gradient-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="48" height="40" rx="2" /> <line x1="8" y1="20" x2="56" y2="20" /> <line x1="16" y1="32" x2="48" y2="32" /> <line x1="16" y1="40" x2="48" y2="40" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-cyan-400 uppercase tracking-wider">Web Development</span> <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-xs text-cyan-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">Website Redesign</h3>
+        <p class="text-slate-400 text-sm">ปรับปรุงเว็บไซต์เดิมเพื่อให้ดูทันสมัยและ UX ดีขึ้น</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Next.js</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Tailwind</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">UX Design</span>
+         </div>
+        </div>
+       </div>
+      </article><!-- Social Media Content -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-rose-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="social">
+       <div class="aspect-video bg-gradient-to-br from-rose-600/20 to-pink-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-rose-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="48" height="48" rx="4" /> <circle cx="32" cy="28" r="4" /> <path d="M8 44l8-12 8 4 8-8 8 8" stroke="currentColor" fill="none" stroke-width="2" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-rose-400 uppercase tracking-wider">Content Creation</span> <span class="px-3 py-1 bg-rose-500/10 border border-rose-500/20 rounded-full text-xs text-rose-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">Social Media Content</h3>
+        <p class="text-slate-400 text-sm">สร้างคอนเทนต์ที่ привлекает engagement สูง</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Canva</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Figma</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Reels</span>
+         </div>
+        </div>
+       </div>
+      </article><!-- Video Production -->
+      <article class="group glass-card rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all duration-300 cursor-pointer" data-portfolio-id="video">
+       <div class="aspect-video bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center">
+        <svg class="w-16 h-16 text-amber-400 opacity-50 group-hover:opacity-100 transition-opacity" viewbox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="12" width="48" height="40" rx="2" /> <polygon points="24,24 24,40 40,32" fill="currentColor" opacity="0.5" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+         <span class="text-xs font-medium text-amber-400 uppercase tracking-wider">Video Production</span> <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-300">ดู</span>
+        </div>
+        <h3 class="text-lg font-semibold mt-2 mb-2">Video Production</h3>
+        <p class="text-slate-400 text-sm">ถ่ายและตัดต่อวิดีโออย่างมืออาชีพพร้อม Motion Graphics</p>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+         <p class="text-xs text-slate-500">Tags:</p>
+         <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">Premiere Pro</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">CapCut</span> <span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">4K</span>
+         </div>
+        </div>
+       </div>
+      </article>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Default configuration
+        const defaultConfig = {
+            site_title: 'Creative Studio',
+            site_tagline: 'สร้างสรรค์ผลงานที่โดดเด่น',
+            hero_title: 'สร้างสรรค์ผลงาน',
+            hero_subtitle: 'บริการครบวงจรด้าน Digital Marketing, Web Development, Graphic Design และอื่นๆ อีกมากมาย',
+            contact_email: 'contact@example.com',
+            contact_phone: '+66 XX XXX XXXX',
+            background_color: '#0d1117',
+            surface_color: '#1e293b',
+            text_color: '#e2e8f0',
+            primary_action_color: '#3b82f6',
+            secondary_action_color: '#60a5fa'
+        };
+
+        let config = { ...defaultConfig };
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (newConfig) => {
+                    config = { ...defaultConfig, ...newConfig };
+                    
+                    // Update site title
+                    const navTitle = document.getElementById('nav-title');
+                    const footerTitle = document.getElementById('footer-title');
+                    if (navTitle) navTitle.textContent = config.site_title || defaultConfig.site_title;
+                    if (footerTitle) footerTitle.textContent = config.site_title || defaultConfig.site_title;
+                    
+                    // Update hero content
+                    const heroTitle = document.getElementById('hero-title');
+                    const heroSubtitle = document.getElementById('hero-subtitle');
+                    if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+                    if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+                    
+                    // Update contact info
+                    const emailDisplay = document.getElementById('contact-email-display');
+                    const phoneDisplay = document.getElementById('contact-phone-display');
+                    if (emailDisplay) emailDisplay.textContent = config.contact_email || defaultConfig.contact_email;
+                    if (phoneDisplay) phoneDisplay.textContent = config.contact_phone || defaultConfig.contact_phone;
+                    
+                    // Apply colors
+                    document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+                    document.body.style.color = config.text_color || defaultConfig.text_color;
+                    
+                    // Update CSS custom properties for dynamic colors
+                    document.documentElement.style.setProperty('--primary-color', config.primary_action_color || defaultConfig.primary_action_color);
+                    document.documentElement.style.setProperty('--secondary-color', config.secondary_action_color || defaultConfig.secondary_action_color);
+                },
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ['site_title', config.site_title || defaultConfig.site_title],
+                    ['site_tagline', config.site_tagline || defaultConfig.site_tagline],
+                    ['hero_title', config.hero_title || defaultConfig.hero_title],
+                    ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ['contact_email', config.contact_email || defaultConfig.contact_email],
+                    ['contact_phone', config.contact_phone || defaultConfig.contact_phone]
+                ])
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveNav() {
+            const scrollPos = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                
+                if (scrollPos >= top && scrollPos < top + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('nav-active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('nav-active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Service tabs functionality
+        const serviceTabs = document.querySelectorAll('.service-tab');
+        const serviceCards = document.querySelectorAll('[data-category]');
+
+        serviceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update tab states
+                serviceTabs.forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('bg-slate-800');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('tab-active');
+                tab.classList.remove('bg-slate-800');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Filter cards
+                const category = tab.id.replace('tab-', '');
+                serviceCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        setTimeout(() => { card.style.opacity = '1'; }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Skills tabs functionality
+        const skillsTabs = document.querySelectorAll('.skills-tab');
+        const skillBadges = document.querySelectorAll('[data-skill-category]');
+
+        skillsTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update tab states
+                skillsTabs.forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('bg-slate-800');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('tab-active');
+                tab.classList.remove('bg-slate-800');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Filter skills
+                const category = tab.id.replace('skills-tab-', '');
+                skillBadges.forEach(badge => {
+                    if (category === 'all' || badge.dataset.skillCategory === category) {
+                        badge.style.display = '';
+                        badge.style.opacity = '0';
+                        setTimeout(() => { badge.style.opacity = '1'; }, 50);
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'กำลังส่ง...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                formSuccess.classList.remove('hidden');
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        });
+
+        // Privacy and Terms modals
+        const privacyLink = document.getElementById('privacy-link');
+        const termsLink = document.getElementById('terms-link');
+        const privacyModal = document.getElementById('privacy-modal');
+        const termsModal = document.getElementById('terms-modal');
+        const closePrivacy = document.getElementById('close-privacy');
+        const closeTerms = document.getElementById('close-terms');
+
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.remove('hidden');
+            privacyModal.classList.add('flex');
+        });
+
+        termsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            termsModal.classList.remove('hidden');
+            termsModal.classList.add('flex');
+        });
+
+        closePrivacy.addEventListener('click', () => {
+            privacyModal.classList.add('hidden');
+            privacyModal.classList.remove('flex');
+        });
+
+        closeTerms.addEventListener('click', () => {
+            termsModal.classList.add('hidden');
+            termsModal.classList.remove('flex');
+        });
+
+        // Close modals on backdrop click
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.classList.add('hidden');
+                privacyModal.classList.remove('flex');
+            }
+        });
+
+        termsModal.addEventListener('click', (e) => {
+            if (e.target === termsModal) {
+                termsModal.classList.add('hidden');
+                termsModal.classList.remove('flex');
+            }
+        });
+
+        // Portfolio modal functionality
+        const portfolioModal = document.getElementById('portfolio-modal');
+        const closePortfolioBtn = document.getElementById('close-portfolio');
+        const viewAllPortfolioBtn = document.getElementById('view-all-portfolio');
+        const portfolioArticles = document.querySelectorAll('[data-portfolio-id]');
+        const portfolioDetailsGrid = document.getElementById('portfolio-details-grid');
+        const portfolioDetailView = document.getElementById('portfolio-detail-view');
+        const backToGalleryBtn = document.getElementById('back-to-gallery');
+
+        // Portfolio data
+        const portfolioData = {
+            ecommerce: {
+                title: 'E-commerce Platform',
+                category: 'Web Development',
+                description: 'ระบบร้านค้าออนไลน์ครบวงจรพร้อมระบบชำระเงิน',
+                details: 'พัฒนาแพลตฟอร์มร้านค้าออนไลน์ที่มีความสามารถสูง ประกอบด้วยระบบจัดการสินค้า ระบบตะกร้าสินค้า ระบบชำระเงิน และระบบติดตามคำสั่งซื้อ มีการอินทิเกรตกับธนาคารหลายแห่งและสปอร์ตโลจิสติกส์ชั้นนำ',
+                features: ['Shopping Cart System', 'Payment Gateway', 'Inventory Management', 'Order Tracking', 'Admin Dashboard', 'Mobile Responsive'],
+                technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API', 'Redux'],
+                year: '2023',
+                client: 'E-commerce Startup'
+            },
+            branding: {
+                title: 'Brand Identity',
+                category: 'Graphic Design',
+                description: 'ออกแบบอัตลักษณ์แบรนด์ตั้งแต่โลโก้จนถึงสื่อทุกชิ้น',
+                details: 'สร้างอัตลักษณ์แบรนด์ที่เป็นเอกลักษณ์และจำได้ว่า ประกอบด้วยการออกแบบโลโก้ คู่มือแบรนด์ การออกแบบแอปพลิเคชัน และสื่ออื่น ๆ ทั้งหมด มีความมุ่งเน้นในการสร้างความรู้สึกและประโยชน์ของแบรนด์',
+                features: ['Logo Design', 'Brand Guidelines', 'Color Palette', 'Typography System', 'Application Design', 'Marketing Collateral'],
+                technologies: ['Figma', 'Adobe XD', 'Adobe Illustrator', 'Photoshop'],
+                year: '2023',
+                client: 'Lifestyle Brand'
+            },
+            campaign: {
+                title: 'Digital Campaign',
+                category: 'Marketing',
+                description: 'แคมเปญโฆษณาที่เพิ่มยอดขายกว่า 200%',
+                details: 'วิจัยตลาดและวางแผนแคมเปญการตลาดดิจิทัล ที่ประสบความสำเร็จและเพิ่มยอดขายอย่างมีนัยสำคัญ ใช้เครื่องมือ Google Ads Meta Ads และการวิเคราะห์ข้อมูลเชิงลึก',
+                features: ['Market Research', 'Campaign Strategy', 'Ad Optimization', 'A/B Testing', 'Analytics Reporting', 'ROI Tracking'],
+                technologies: ['Google Analytics', 'Google Ads', 'Meta Business Suite', 'SEMrush'],
+                year: '2023',
+                client: 'Fashion Retailer',
+                result: '+200% Sales Growth'
+            },
+            redesign: {
+                title: 'Website Redesign',
+                category: 'Web Development',
+                description: 'ปรับปรุงเว็บไซต์เดิมเพื่อให้ดูทันสมัยและ UX ดีขึ้น',
+                details: 'ปรับปรุงเว็บไซต์เดิมที่ล้าสมัยให้เป็นแพลตฟอร์มสมัยใหม่ที่ปรับให้เหมาะสมกับการใช้มือถือ มีการปรับปรุง UX/UI และการทำให้เว็บไซต์เร็วขึ้น',
+                features: ['Responsive Design', 'Performance Optimization', 'UX Improvement', 'SEO Optimization', 'Modern UI Design', 'CMS Integration'],
+                technologies: ['Next.js', 'Tailwind CSS', 'JavaScript', 'Headless CMS'],
+                year: '2023',
+                client: 'Corporate Website'
+            },
+            social: {
+                title: 'Social Media Content',
+                category: 'Content Creation',
+                description: 'สร้างคอนเทนต์ที่ привлекates engagement สูง',
+                details: 'ออกแบบและสร้างคอนเทนต์สำหรับโซเชียลมีเดีย ที่มีการ engage กับผู้ชมสูงและเพิ่มการติดตามแฟน ประกอบด้วยรูปภาพ วิดีโอสั้น ๆ และสตรี่ม',
+                features: ['Content Design', 'Video Creation', 'Copywriting', 'Engagement Strategy', 'Analytics Tracking', 'Community Management'],
+                technologies: ['Canva', 'Adobe Creative Suite', 'CapCut', 'Figma'],
+                year: '2023',
+                client: 'Beauty & Wellness Brand',
+                result: '150% Engagement Increase'
+            },
+            video: {
+                title: 'Video Production',
+                category: 'Video Production',
+                description: 'ถ่ายและตัดต่อวิดีโออย่างมืออาชีพพร้อม Motion Graphics',
+                details: 'สร้างวิดีโอคุณภาพสูง ประกอบด้วยการถ่ายภาพ การแก้ไขสีคณิตศาสตร์ การตัดต่อและการเพิ่ม Motion Graphics เหมาะสำหรับโฆษณา ตัวอย่างสินค้า และเนื้อหาทั่วไป',
+                features: ['4K Video Recording', 'Color Grading', 'Motion Graphics', 'Sound Design', 'Video Editing', 'Subtitle & Captions'],
+                technologies: ['Premiere Pro', 'After Effects', 'CapCut', 'DaVinci Resolve'],
+                year: '2023',
+                client: 'Marketing Agency',
+                result: '500K+ Views'
+            }
+        };
+
+        // View all portfolio
+        viewAllPortfolioBtn.addEventListener('click', () => {
+            portfolioModal.classList.remove('hidden');
+            portfolioModal.classList.add('flex');
+            portfolioDetailsGrid.style.display = 'grid';
+            portfolioDetailView.classList.add('hidden');
+        });
+
+        // Close portfolio modal
+        closePortfolioBtn.addEventListener('click', () => {
+            portfolioModal.classList.add('hidden');
+            portfolioModal.classList.remove('flex');
+        });
+
+        // Close portfolio modal on backdrop click
+        portfolioModal.addEventListener('click', (e) => {
+            if (e.target === portfolioModal) {
+                portfolioModal.classList.add('hidden');
+                portfolioModal.classList.remove('flex');
+            }
+        });
+
+        // Portfolio card click handler
+        portfolioArticles.forEach(article => {
+            article.addEventListener('click', () => {
+                const portfolioId = article.dataset.portfolioId;
+                const data = portfolioData[portfolioId];
+                
+                if (data) {
+                    // Hide grid and show detail view
+                    portfolioDetailsGrid.style.display = 'none';
+                    portfolioDetailView.classList.remove('hidden');
+                    
+                    // Build detail content
+                    const detailContent = document.getElementById('portfolio-detail-content');
+                    detailContent.innerHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                            <div class="md:col-span-2">
+                                <h3 class="text-3xl font-bold mb-2">${data.title}</h3>
+                                <span class="text-sm font-medium text-blue-400 uppercase tracking-wider">${data.category}</span>
+                                <p class="text-slate-400 text-lg mt-4 mb-6">${data.description}</p>
+                                <p class="text-slate-300 leading-relaxed mb-6">${data.details}</p>
+                                
+                                <h4 class="text-lg font-semibold mb-3">หลัก Features</h4>
+                                <ul class="grid grid-cols-2 gap-3 mb-6">
+                                    ${data.features.map(feature => `<li class="flex items-center gap-2 text-slate-300"><svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="glass-card rounded-2xl p-6 h-fit">
+                                <h4 class="font-semibold mb-4">Project Details</h4>
+                                <div class="space-y-4 text-sm">
+                                    <div>
+                                        <p class="text-slate-500 text-xs uppercase tracking-wider">Client</p>
+                                        <p class="text-slate-200 font-medium">${data.client}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-slate-500 text-xs uppercase tracking-wider">Completion Year</p>
+                                        <p class="text-slate-200 font-medium">${data.year}</p>
+                                    </div>
+                                    ${data.result ? `
+                                    <div>
+                                        <p class="text-slate-500 text-xs uppercase tracking-wider">Result</p>
+                                        <p class="text-green-400 font-medium">${data.result}</p>
+                                    </div>
+                                    ` : ''}
+                                    <div>
+                                        <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Technologies</p>
+                                        <div class="flex flex-wrap gap-2">
+                                            ${data.technologies.map(tech => `<span class="px-2 py-1 bg-slate-800 text-xs rounded text-slate-300">${tech}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        });
+
+        // Back to gallery
+        backToGalleryBtn.addEventListener('click', () => {
+            portfolioDetailsGrid.style.display = 'grid';
+            portfolioDetailView.classList.add('hidden');
+        });
+
+        // Update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Add transition styles for cards
+        document.querySelectorAll('.service-card, [data-skill-category]').forEach(el => {
+            el.style.transition = 'all 0.3s ease, opacity 0.3s ease';
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9da05acda3d026e3',t:'MTc3MzEyNTEwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

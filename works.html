@@ -6,7 +6,7 @@
     <title>คลังผลงานทั้งหมด | พีรัชชัย</title>
     
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Anuphan:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script>
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -17,10 +17,10 @@
     </script>
 
     <style>
-        :root { --primary-font: 'Instrument Sans', sans-serif; }
-        body { font-family: var(--primary-font); transition: background-color 0.3s ease; }
-        .portfolio-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .portfolio-card:hover { transform: translateY(-8px); }
+        :root { --main-font: 'Anuphan', 'Instrument Sans', sans-serif; }
+        body { font-family: var(--main-font); transition: background-color 0.3s ease; }
+        .portfolio-card { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .portfolio-card:hover { transform: translateY(-12px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
         .filter-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -29,35 +29,36 @@
 
 <body class="bg-slate-50 dark:bg-slate-900 flex flex-col min-h-full text-slate-900 dark:text-slate-100">
 
-    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center font-bold text-xl tracking-tight text-slate-900 dark:text-white">
-                <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                BACK
+            <a href="index.html" class="flex items-center font-bold text-lg text-blue-600 dark:text-blue-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                กลับหน้าหลัก
             </a>
 
-            <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:ring-2 hover:ring-blue-500 transition-all">
+            <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-110 active:scale-95 transition-all">
                 <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
                 <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.01 8.01 0 0110.586 10.586z"></path></svg>
             </button>
         </div>
     </nav>
 
-    <header class="bg-white dark:bg-slate-900 py-16 border-b border-slate-200 dark:border-slate-800">
+    <header class="bg-white dark:bg-slate-900 pt-12 pb-8 border-b border-slate-100 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">คลังผลงานสร้างสรรค์</h1>
-            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">รวบรวมโปรเจกต์จาก 10 บริการหลัก ตั้งแต่การพัฒนาซอฟต์แวร์ การตลาด ไปจนถึงงานสร้างสรรค์สื่อประสม</p>
+            <span class="text-blue-600 font-bold tracking-widest uppercase text-xs">Full Portfolio</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mt-2 text-slate-900 dark:text-white tracking-tight">คลังผลงานรวม 10 บริการ</h1>
+            <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">คัดสรรโปรเจกต์คุณภาพที่สะท้อนทักษะด้าน Creative, Technology และ Marketing ของเรา</p>
         </div>
     </header>
 
-    <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-16 z-40">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex gap-3 overflow-x-auto no-scrollbar">
-            <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 whitespace-nowrap">ทั้งหมด</button>
-            <button onclick="filterProjects('Tech')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap">Web & Data</button>
-            <button onclick="filterProjects('Creative')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap">Design & Creative</button>
-            <button onclick="filterProjects('Marketing')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap">SEO & Marketing</button>
-            <button onclick="filterProjects('Media')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap">Photo & Video</button>
-            <button onclick="filterProjects('Admin')" class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap">Translation & Org</button>
+    <div class="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 sticky top-16 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex gap-2 overflow-x-auto no-scrollbar">
+            <button onclick="filterProjects('all')" class="filter-btn active px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 whitespace-nowrap transition-all">ทั้งหมด</button>
+            <button onclick="filterProjects('Development')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Web & Data</button>
+            <button onclick="filterProjects('Creative')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Design & Creative</button>
+            <button onclick="filterProjects('Marketing')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">SEO & Marketing</button>
+            <button onclick="filterProjects('Media')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Photo & Video</button>
+            <button onclick="filterProjects('Professional')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Translation & Org</button>
         </div>
     </div>
 
@@ -68,160 +69,171 @@
         </div>
     </main>
 
-    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-500 dark:text-slate-400 text-sm">&copy; <span id="copyright-year"></span> พีรัชชัย. Creative & Tech Solutions.</p>
+            <p class="text-slate-400 text-sm tracking-wide uppercase">© <span id="year"></span> Peerapatchai. Built with Tailwind CSS.</p>
         </div>
     </footer>
 
-    <script id="portfolio-db" type="application/json">
+    <script id="portfolio-data" type="application/json">
     {
-        "projects": [
+        "items": [
             {
-                "title": "SEO Content Strategy: Tech Blog",
+                "id": "01",
+                "title": "SEO Mastery for Tech Startup",
+                "service": "1.เขียนบทความ SEO",
                 "category": "Marketing",
-                "desc": "วางแผนคีย์เวิร์ดและเขียนบทความ SEO ที่ช่วยดันอันดับเว็บไซต์ติดหน้าแรก Google ภายใน 3 เดือน",
-                "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800",
-                "tag": "1.เขียนบทความ SEO"
+                "desc": "เพิ่มยอดผู้เข้าชมเว็บไซต์ 300% ผ่านบทความเชิงเทคนิคที่ติดอันดับ Top 3 บน Google Search",
+                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800"
             },
             {
-                "title": "E-Commerce Web Application",
-                "category": "Tech",
-                "desc": "พัฒนาเว็บไซต์ขายสินค้าออนไลน์แบบ Full-stack พร้อมระบบตะกร้าสินค้าและระบบชำระเงิน",
-                "image": "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800",
-                "tag": "4.เขียนเว็บไซต์"
-            },
-            {
-                "title": "Data Insights Dashboard",
-                "category": "Tech",
-                "desc": "วิเคราะห์ข้อมูลการขายและสร้าง Dashboard ด้วย Looker Studio เพื่อประกอบการตัดสินใจทางธุรกิจ",
-                "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800",
-                "tag": "5.Data Analytics"
-            },
-            {
-                "title": "Brand Identity Design",
+                "id": "02",
+                "title": "Minimalist Brand Visuals",
+                "service": "2.ออกแบบกราฟิก",
                 "category": "Creative",
-                "desc": "ออกแบบโลโก้ อัตลักษณ์แบรนด์ และระบบสีให้เข้ากับภาพลักษณ์องค์กรรุ่นใหม่",
-                "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800",
-                "tag": "2.ออกแบบกราฟิก"
+                "desc": "สร้างสรรค์ Key Visual และระบบกราฟิกสำหรับ Social Media ของแบรนด์สกินแคร์ชื่อดัง",
+                "img": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800"
             },
             {
-                "title": "Event Poster Series",
+                "id": "03",
+                "title": "Concert Event Posters",
+                "service": "3.ทำโปสเตอร์",
                 "category": "Creative",
-                "desc": "ออกแบบชุดโปสเตอร์ประชาสัมพันธ์งานอีเวนต์ดนตรี เน้นความโดดเด่นและสะดุดตา",
-                "image": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=800",
-                "tag": "3.ทำโปสเตอร์"
+                "desc": "ออกแบบโปสเตอร์โปรโมตคอนเสิร์ตที่เน้นงาน Typo และคู่สีที่สะดุดตาผู้พบเห็น",
+                "img": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=800"
             },
             {
-                "title": "Short Film Production & Edit",
+                "id": "04",
+                "title": "Modern E-Commerce Engine",
+                "service": "4.เขียนเว็บไซต์",
+                "category": "Development",
+                "desc": "พัฒนาแพลตฟอร์มซื้อขายสินค้าออนไลน์ที่รองรับการจ่ายเงินและจัดการสต็อกแบบ Real-time",
+                "img": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800"
+            },
+            {
+                "id": "05",
+                "title": "Business Intelligence Report",
+                "service": "5.Data Analytics",
+                "category": "Development",
+                "desc": "วิเคราะห์พฤติกรรมผู้ใช้และสรุปข้อมูลเชิงลึกผ่าน Interactive Dashboard สำหรับทีมบริหาร",
+                "img": "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800"
+            },
+            {
+                "id": "06",
+                "title": "Growth Hacking Campaign",
+                "service": "6.Marketing",
+                "category": "Marketing",
+                "desc": "วางกลยุทธ์การตลาดดิจิทัลที่ช่วยลดต้นทุนต่อคำสั่งซื้อ (CPA) ได้ถึง 40% ภายใน 2 เดือน",
+                "img": "https://images.unsplash.com/photo-1533750516457-a7f992034fce?q=80&w=800"
+            },
+            {
+                "id": "07",
+                "title": "Cinematic Product Showreel",
+                "service": "7.Photography & Video",
                 "category": "Media",
-                "desc": "บริการถ่ายทำและตัดต่อวิดีโอ Cinematic สำหรับโฆษณาสินค้าลง Social Media",
-                "image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800",
-                "tag": "7.Photography & Video"
+                "desc": "บริการถ่ายทำและตัดต่อวิดีโอแนะนำสินค้าที่เน้น Mood & Tone ระดับมืออาชีพ",
+                "img": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800"
             },
             {
-                "title": "Integrated Marketing Campaign",
-                "category": "Marketing",
-                "desc": "วางแผนการตลาดออนไลน์แบบครบวงจร ทั้งการยิงโฆษณาและการบริหารจัดการสื่อ",
-                "image": "https://images.unsplash.com/photo-1533750516457-a7f992034fce?q=80&w=800",
-                "tag": "6.Marketing"
+                "id": "08",
+                "title": "Corporate Event Management",
+                "service": "8.Organization",
+                "category": "Professional",
+                "desc": "บริหารจัดการและจัดระเบียบงานประชุมสัมมนาระดับนานาชาติที่มีผู้เข้าร่วมกว่า 500 คน",
+                "img": "https://images.unsplash.com/photo-1505373630103-821c706d8a89?q=80&w=800"
             },
             {
-                "title": "Professional Document Translation",
-                "category": "Admin",
-                "desc": "บริการแปลภาษาไทย-อังกฤษ สำหรับคู่มือการใช้งานและเอกสารสำคัญทางธุรกิจ",
-                "image": "https://images.unsplash.com/photo-1543165796-5426273eaab3?q=80&w=800",
-                "tag": "9.แปลภาษา"
+                "id": "09",
+                "title": "Technical Document Translation",
+                "service": "9.แปลภาษา",
+                "category": "Professional",
+                "desc": "แปลและเรียบเรียงเอกสารคู่มือทางวิศวกรรมจากภาษาอังกฤษเป็นไทยอย่างถูกต้องแม่นยำ",
+                "img": "https://images.unsplash.com/photo-1543165796-5426273eaab3?q=80&w=800"
             },
             {
-                "title": "Corporate Event Organization",
-                "category": "Admin",
-                "desc": "บริหารจัดการและจัดระเบียบงานประชุมสัมมนาแบบครบวงจร (Project Management)",
-                "image": "https://images.unsplash.com/photo-1505373630103-821c706d8a89?q=80&w=800",
-                "tag": "8.Organization"
-            },
-            {
-                "title": "Product Creative Mockup",
+                "id": "10",
+                "title": "Creative Product Mockups",
+                "service": "10.Creative",
                 "category": "Creative",
-                "desc": "สร้างสรรค์ Mockup สินค้าเสมือนจริงเพื่อใช้ในการพรีเซนต์งานให้ลูกค้าเห็นภาพรวม",
-                "image": "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800",
-                "tag": "10.Creative"
+                "desc": "สร้างสรรค์ Mockup สินค้าในรูปแบบ 3D และภาพถ่ายเพื่อใช้ในการพรีเซนต์งานขาย",
+                "img": "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800"
             }
         ]
     }
     </script>
 
     <script>
-        // 1. Dark Mode Management
-        const themeToggle = document.getElementById('theme-toggle');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        // 1. Theme Logic
+        const themeBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-toggle-light-icon');
+        const moonIcon = document.getElementById('theme-toggle-dark-icon');
 
         const updateIcons = () => {
             if (document.documentElement.classList.contains('dark')) {
-                lightIcon.classList.remove('hidden');
-                darkIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
             } else {
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
             }
         };
 
-        themeToggle.addEventListener('click', () => {
+        themeBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
             updateIcons();
         });
 
-        // 2. Portfolio Rendering Engine
+        // 2. Render Logic
         function renderProjects(filter = 'all') {
             const grid = document.getElementById('portfolio-grid');
-            const data = JSON.parse(document.getElementById('portfolio-db').textContent);
+            const data = JSON.parse(document.getElementById('portfolio-data').textContent);
             grid.innerHTML = '';
 
-            const filtered = filter === 'all' 
-                ? data.projects 
-                : data.projects.filter(p => p.category === filter);
+            const filteredItems = filter === 'all' 
+                ? data.items 
+                : data.items.filter(item => item.category === filter);
 
-            filtered.forEach(project => {
-                grid.innerHTML += `
-                    <div class="portfolio-card bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm flex flex-col h-full group">
-                        <div class="aspect-[16/10] relative overflow-hidden bg-slate-200 dark:bg-slate-700">
-                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute top-4 left-4">
-                                <span class="px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm text-blue-600 dark:text-blue-400">
-                                    ${project.tag}
+            filteredItems.forEach(item => {
+                const cardHtml = `
+                    <div class="portfolio-card bg-white dark:bg-slate-800 rounded-[2.5rem] border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full group">
+                        <div class="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-700">
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-tighter">
+                                    ${item.service}
                                 </span>
                             </div>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-3">${project.title}</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${project.desc}</p>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">${item.title}</h3>
+                            <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">${item.desc}</p>
                         </div>
-                        <div class="px-8 pb-8">
-                            <button class="w-full py-3 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all uppercase tracking-widest">
-                                View Case Study
+                        <div class="px-8 pb-8 mt-auto">
+                            <button class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-bold rounded-2xl hover:bg-blue-600 dark:hover:bg-blue-400 dark:hover:text-white transition-all uppercase tracking-widest shadow-lg shadow-slate-200 dark:shadow-none">
+                                View Full Project
                             </button>
                         </div>
                     </div>
                 `;
+                grid.insertAdjacentHTML('beforeend', cardHtml);
             });
         }
 
-        // 3. Filter Controls
+        // 3. Filter Execution
         function filterProjects(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-blue-600', 'text-white', 'dark:bg-blue-600');
-                btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-600');
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600');
             });
             event.currentTarget.classList.add('active');
             renderProjects(category);
         }
 
-        // Initialize
+        // Init
         updateIcons();
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
         renderProjects();
     </script>
 </body>

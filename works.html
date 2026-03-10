@@ -1,240 +1,239 @@
-<!doctype html>
-<html lang="th" class="h-full scroll-smooth">
+<!DOCTYPE html>
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คลังผลงานทั้งหมด | พีรัชชัย</title>
-    
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Anuphan:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root { --main-font: 'Anuphan', 'Instrument Sans', sans-serif; }
-        body { font-family: var(--main-font); transition: background-color 0.3s ease; }
-        .portfolio-card { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
-        .portfolio-card:hover { transform: translateY(-12px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
-        .filter-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
+<title>ผลงานทั้งหมด | Portfolio</title>
+
+<meta name="description" content="รวมผลงานบริการ เขียนบทความ SEO ออกแบบกราฟิก พัฒนาเว็บไซต์ การตลาด Data Analytics และอื่นๆ">
+
+<style>
+
+:root{
+--bg:#ffffff;
+--text:#111111;
+--card:#f4f4f4;
+--accent:#4f46e5;
+}
+
+body.dark{
+--bg:#0f172a;
+--text:#f8fafc;
+--card:#1e293b;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid #ddd;
+}
+
+h1{
+margin:0;
+}
+
+.toggle{
+padding:8px 14px;
+cursor:pointer;
+border-radius:6px;
+border:none;
+background:var(--accent);
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+margin-top:0;
+}
+
+.category{
+margin-bottom:40px;
+}
+
+.category h2{
+margin-bottom:20px;
+border-left:5px solid var(--accent);
+padding-left:10px;
+}
+
+</style>
+
 </head>
+<body>
 
-<body class="bg-slate-50 dark:bg-slate-900 flex flex-col min-h-full text-slate-900 dark:text-slate-100">
+<header>
 
-    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center font-bold text-lg text-blue-600 dark:text-blue-400">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                กลับหน้าหลัก
-            </a>
+<h1>ผลงานทั้งหมด</h1>
 
-            <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-110 active:scale-95 transition-all">
-                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
-                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.01 8.01 0 0110.586 10.586z"></path></svg>
-            </button>
-        </div>
-    </nav>
+<button class="toggle" onclick="toggleMode()">
+🌙 Dark Mode
+</button>
 
-    <header class="bg-white dark:bg-slate-900 pt-12 pb-8 border-b border-slate-100 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <span class="text-blue-600 font-bold tracking-widest uppercase text-xs">Full Portfolio</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold mt-2 text-slate-900 dark:text-white tracking-tight">คลังผลงานรวม 10 บริการ</h1>
-            <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">คัดสรรโปรเจกต์คุณภาพที่สะท้อนทักษะด้าน Creative, Technology และ Marketing ของเรา</p>
-        </div>
-    </header>
+</header>
 
-    <div class="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 sticky top-16 z-40">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex gap-2 overflow-x-auto no-scrollbar">
-            <button onclick="filterProjects('all')" class="filter-btn active px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 whitespace-nowrap transition-all">ทั้งหมด</button>
-            <button onclick="filterProjects('Development')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Web & Data</button>
-            <button onclick="filterProjects('Creative')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Design & Creative</button>
-            <button onclick="filterProjects('Marketing')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">SEO & Marketing</button>
-            <button onclick="filterProjects('Media')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Photo & Video</button>
-            <button onclick="filterProjects('Professional')" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 whitespace-nowrap transition-all">Translation & Org</button>
-        </div>
-    </div>
+<div class="container" id="portfolioContainer"></div>
 
-    <main class="flex-grow py-12 bg-slate-50 dark:bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4">
-            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-        </div>
-    </main>
 
-    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-400 text-sm tracking-wide uppercase">© <span id="year"></span> Peerapatchai. Built with Tailwind CSS.</p>
-        </div>
-    </footer>
+<script>
 
-    <script id="portfolio-data" type="application/json">
-    {
-        "items": [
-            {
-                "id": "01",
-                "title": "SEO Mastery for Tech Startup",
-                "service": "1.เขียนบทความ SEO",
-                "category": "Marketing",
-                "desc": "เพิ่มยอดผู้เข้าชมเว็บไซต์ 300% ผ่านบทความเชิงเทคนิคที่ติดอันดับ Top 3 บน Google Search",
-                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800"
-            },
-            {
-                "id": "02",
-                "title": "Minimalist Brand Visuals",
-                "service": "2.ออกแบบกราฟิก",
-                "category": "Creative",
-                "desc": "สร้างสรรค์ Key Visual และระบบกราฟิกสำหรับ Social Media ของแบรนด์สกินแคร์ชื่อดัง",
-                "img": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800"
-            },
-            {
-                "id": "03",
-                "title": "Concert Event Posters",
-                "service": "3.ทำโปสเตอร์",
-                "category": "Creative",
-                "desc": "ออกแบบโปสเตอร์โปรโมตคอนเสิร์ตที่เน้นงาน Typo และคู่สีที่สะดุดตาผู้พบเห็น",
-                "img": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=800"
-            },
-            {
-                "id": "04",
-                "title": "Modern E-Commerce Engine",
-                "service": "4.เขียนเว็บไซต์",
-                "category": "Development",
-                "desc": "พัฒนาแพลตฟอร์มซื้อขายสินค้าออนไลน์ที่รองรับการจ่ายเงินและจัดการสต็อกแบบ Real-time",
-                "img": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800"
-            },
-            {
-                "id": "05",
-                "title": "Business Intelligence Report",
-                "service": "5.Data Analytics",
-                "category": "Development",
-                "desc": "วิเคราะห์พฤติกรรมผู้ใช้และสรุปข้อมูลเชิงลึกผ่าน Interactive Dashboard สำหรับทีมบริหาร",
-                "img": "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800"
-            },
-            {
-                "id": "06",
-                "title": "Growth Hacking Campaign",
-                "service": "6.Marketing",
-                "category": "Marketing",
-                "desc": "วางกลยุทธ์การตลาดดิจิทัลที่ช่วยลดต้นทุนต่อคำสั่งซื้อ (CPA) ได้ถึง 40% ภายใน 2 เดือน",
-                "img": "https://images.unsplash.com/photo-1533750516457-a7f992034fce?q=80&w=800"
-            },
-            {
-                "id": "07",
-                "title": "Cinematic Product Showreel",
-                "service": "7.Photography & Video",
-                "category": "Media",
-                "desc": "บริการถ่ายทำและตัดต่อวิดีโอแนะนำสินค้าที่เน้น Mood & Tone ระดับมืออาชีพ",
-                "img": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800"
-            },
-            {
-                "id": "08",
-                "title": "Corporate Event Management",
-                "service": "8.Organization",
-                "category": "Professional",
-                "desc": "บริหารจัดการและจัดระเบียบงานประชุมสัมมนาระดับนานาชาติที่มีผู้เข้าร่วมกว่า 500 คน",
-                "img": "https://images.unsplash.com/photo-1505373630103-821c706d8a89?q=80&w=800"
-            },
-            {
-                "id": "09",
-                "title": "Technical Document Translation",
-                "service": "9.แปลภาษา",
-                "category": "Professional",
-                "desc": "แปลและเรียบเรียงเอกสารคู่มือทางวิศวกรรมจากภาษาอังกฤษเป็นไทยอย่างถูกต้องแม่นยำ",
-                "img": "https://images.unsplash.com/photo-1543165796-5426273eaab3?q=80&w=800"
-            },
-            {
-                "id": "10",
-                "title": "Creative Product Mockups",
-                "service": "10.Creative",
-                "category": "Creative",
-                "desc": "สร้างสรรค์ Mockup สินค้าในรูปแบบ 3D และภาพถ่ายเพื่อใช้ในการพรีเซนต์งานขาย",
-                "img": "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800"
-            }
-        ]
-    }
-    </script>
+const services = {
 
-    <script>
-        // 1. Theme Logic
-        const themeBtn = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('theme-toggle-light-icon');
-        const moonIcon = document.getElementById('theme-toggle-dark-icon');
+seo:[
+{title:"บทความ SEO ธุรกิจท่องเที่ยว"},
+{title:"บทความ SEO ร้านอาหาร"},
+{title:"บทความ SEO เทคโนโลยี"}
+],
 
-        const updateIcons = () => {
-            if (document.documentElement.classList.contains('dark')) {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
-        };
+graphic:[
+{title:"ออกแบบ Banner Facebook"},
+{title:"ออกแบบ Logo"},
+{title:"ออกแบบ Branding"}
+],
 
-        themeBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            updateIcons();
-        });
+poster:[
+{title:"โปสเตอร์โปรโมทสินค้า"},
+{title:"โปสเตอร์อีเวนต์"},
+{title:"โปสเตอร์โฆษณา"}
+],
 
-        // 2. Render Logic
-        function renderProjects(filter = 'all') {
-            const grid = document.getElementById('portfolio-grid');
-            const data = JSON.parse(document.getElementById('portfolio-data').textContent);
-            grid.innerHTML = '';
+web:[
+{title:"เว็บไซต์บริษัท"},
+{title:"Landing Page"},
+{title:"E-commerce"}
+],
 
-            const filteredItems = filter === 'all' 
-                ? data.items 
-                : data.items.filter(item => item.category === filter);
+data:[
+{title:"Dashboard วิเคราะห์ยอดขาย"},
+{title:"Data Visualization"},
+{title:"Business Analytics"}
+],
 
-            filteredItems.forEach(item => {
-                const cardHtml = `
-                    <div class="portfolio-card bg-white dark:bg-slate-800 rounded-[2.5rem] border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full group">
-                        <div class="aspect-video relative overflow-hidden bg-slate-100 dark:bg-slate-700">
-                            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                            <div class="absolute top-4 right-4">
-                                <span class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-tighter">
-                                    ${item.service}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">${item.title}</h3>
-                            <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">${item.desc}</p>
-                        </div>
-                        <div class="px-8 pb-8 mt-auto">
-                            <button class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-bold rounded-2xl hover:bg-blue-600 dark:hover:bg-blue-400 dark:hover:text-white transition-all uppercase tracking-widest shadow-lg shadow-slate-200 dark:shadow-none">
-                                View Full Project
-                            </button>
-                        </div>
-                    </div>
-                `;
-                grid.insertAdjacentHTML('beforeend', cardHtml);
-            });
-        }
+marketing:[
+{title:"วางแผน Digital Marketing"},
+{title:"SEO Strategy"},
+{title:"Social Media Campaign"}
+],
 
-        // 3. Filter Execution
-        function filterProjects(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-blue-600', 'text-white');
-                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600');
-            });
-            event.currentTarget.classList.add('active');
-            renderProjects(category);
-        }
+photo:[
+{title:"ถ่ายภาพสินค้า"},
+{title:"ถ่ายวิดีโอโฆษณา"},
+{title:"ตัดต่อวิดีโอโปรโมท"}
+],
 
-        // Init
-        updateIcons();
-        document.getElementById('year').textContent = new Date().getFullYear();
-        renderProjects();
-    </script>
+organization:[
+{title:"จัดอีเวนต์บริษัท"},
+{title:"จัดงานสัมมนา"},
+{title:"จัดกิจกรรมองค์กร"}
+],
+
+translation:[
+{title:"แปลเอกสารธุรกิจ"},
+{title:"แปลเว็บไซต์"},
+{title:"แปลบทความ"}
+],
+
+mockup:[
+{title:"Creative Packaging Mockup"},
+{title:"Product Mockup"},
+{title:"Brand Mockup"}
+]
+
+}
+
+
+const serviceNames = {
+
+seo:"เขียนบทความ SEO",
+graphic:"ออกแบบกราฟิก",
+poster:"ทำโปสเตอร์",
+web:"เขียนเว็บไซต์",
+data:"Data Analytics",
+marketing:"Marketing",
+photo:"Photography / Video",
+organization:"Organization",
+translation:"แปลภาษา",
+mockup:"Creative Mockup"
+
+}
+
+
+const container=document.getElementById("portfolioContainer")
+
+Object.keys(services).forEach(key=>{
+
+const category=document.createElement("div")
+category.className="category"
+
+let html=`<h2>${serviceNames[key]}</h2>`
+html+=`<div class="grid">`
+
+services[key].forEach(item=>{
+html+=`
+<div class="card">
+<h3>${item.title}</h3>
+<p>${serviceNames[key]}</p>
+</div>
+`
+})
+
+html+=`</div>`
+category.innerHTML=html
+
+container.appendChild(category)
+
+})
+
+
+function toggleMode(){
+
+document.body.classList.toggle("dark")
+
+const btn=document.querySelector(".toggle")
+
+if(document.body.classList.contains("dark")){
+btn.innerText="☀️ Light Mode"
+}else{
+btn.innerText="🌙 Dark Mode"
+}
+
+}
+
+</script>
+
 </body>
 </html>

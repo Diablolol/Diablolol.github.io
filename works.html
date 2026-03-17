@@ -8,12 +8,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&amp;family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1a2332',
+                            950: '#0d1117'
+                        }
+                    }
+                }
+            }
+        }
+  </script>  
   <style>
     * { box-sizing: border-box; }
     
     :root {
-      --bg-primary: #0f0f1a;
-      --bg-secondary: #1a1a2e;
       --text-primary: #ffffff;
       --accent-primary: #6366f1;
       --accent-secondary: #a855f7;

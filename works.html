@@ -1,430 +1,121 @@
+
 <!doctype html>
 <html lang="th" class="h-full scroll-smooth">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Showcase</title>
+  <title>Portfolio Production</title>
+
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <script>
     tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
-                },
-                colors: {
-                    slate: {
-                        850: '#1a2332',
-                        950: '#0d1117'
-                    }
-                }
-            }
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
+          }
         }
+      }
     }
-  </script>  
+  </script>
 
   <style>
-    /* CSS Variables ตามไฟล์หลัก */
-    :root {
-      --bg-primary: #0f172a; /* slate-900 */
-      --bg-secondary: #1e293b; /* slate-800 */
-      --text-primary: #f1f5f9;
-      --accent-primary: #6366f1;
-      --accent-secondary: #a855f7;
-    }
-    
     body {
       font-family: 'Instrument Sans', 'Noto Sans Thai', sans-serif;
-      background-color: #0d1117; /* slate-950 */
-      color: var(--text-primary);
-      transition: background-color 0.3s ease;
     }
-
-    /* Glassmorphism Effect [cite: 6, 111] */
     .glass-card {
       background: rgba(30, 41, 59, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(148, 163, 184, 0.1);
       transition: all 0.3s ease;
     }
-    
     .glass-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+      transform: translateY(-6px);
     }
-
-    /* Gradient Text [cite: 5, 110] */
     .gradient-text {
       background: linear-gradient(135deg, #60a5fa, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
-
-    /* Active States [cite: 3, 107] */
-    .tab-active {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: white;
-    }
-
-    /* Animations [cite: 8, 112, 114] */
-    @keyframes float { 
-      0%, 100% { transform: translateY(0px); } 
-      50% { transform: translateY(-10px); } 
-    }
-    .float-animation { animation: float 3s ease-in-out infinite; }
-
-    @keyframes fadeInUp { 
-      from { opacity: 0; transform: translateY(30px); } 
-      to { opacity: 1; transform: translateY(0); } 
-    }
-    .animate-fade-in { animation: fadeInUp 0.6s ease-out forwards; }
-
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
   </style>
- </head>
- <body class="bg-slate-950 text-slate-100">
-     <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-             <a href="index.html" class="group flex items-center gap-2 font-bold text-white hover:text-indigo-400 transition-all">
-                 <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                 </svg>
-                 กลับหน้าหลัก
-             </a>
-             <div id="themeToggle" class="cursor-pointer p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors">
-                 <span id="theme-icon">🌙</span>
-             </div>
-         </div>
-     </nav>
-   
-   <main class="max-w-7xl mx-auto px-4 py-12 relative z-10">
-        <header class="text-center mb-16 animate-fade-in">
-            <h1 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">คลังผลงานทั้งหมด</h1>
-            <p class="text-slate-400 max-w-2xl mx-auto">รวบรวมโปรเจกต์และการทำงานที่ผ่านมาของเรา</p>
-        </header>
+</head>
 
-        <div id="categoryContainer" class="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in" style="animation-delay: 0.2s;">
-            </div>
+<body class="bg-slate-950 text-slate-100">
 
-        <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in" style="animation-delay: 0.4s;">
-            </div>
-   </main>
-   <!-- Category Filter -->
-   <section class="px-4 md:px-8 mb-8">
-    <div class="max-w-7xl mx-auto">
-     <div class="flex flex-wrap justify-center gap-3" id="categoryFilter">
-      <!-- Categories will be inserted here -->
-     </div>
-    </div>
-   </section><!-- Portfolio Grid -->
-   <main class="px-4 md:px-8 pb-16">
-    <div class="max-w-7xl mx-auto">
-     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="portfolioContainer">
-      <!-- Cards will be inserted here -->
-     </div>
-    </div>
-   </main><!-- Footer -->
-   <footer class="py-8 px-4 border-t border-white/10">
-    <div class="max-w-7xl mx-auto text-center">
-     <p class="opacity-50 text-sm">© 2025 Portfolio Showcase • สร้างด้วย ❤️</p>
-    </div>
-   </footer>
+<nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="index.html" class="font-bold hover:text-indigo-400">← กลับหน้าหลัก</a>
+    <!-- <button id="themeToggle" class="p-2 bg-slate-800 rounded">🌙</button> -->
   </div>
-  <script>
-    const defaultConfig = {
-      page_title: 'ผลงานทั้งหมด',
-      subtitle: 'รวมผลงานและบริการทั้งหมดของเรา',
-      background_color: '#0f0f1a',
-      surface_color: '#1a1a2e',
-      text_color: '#ffffff',
-      primary_action_color: '#6366f1',
-      secondary_action_color: '#a855f7'
-    };
+</nav>
 
-    const services = {
-      seo: {
-        icon: '📝',
-        label: 'SEO Content',
-        color: 'from-blue-500 to-cyan-400',
-        items: [
-          { title: 'บทความ SEO ธุรกิจท่องเที่ยว', desc: 'เนื้อหาคุณภาพสูงสำหรับธุรกิจท่องเที่ยว' },
-          { title: 'บทความ SEO ร้านอาหาร', desc: 'เพิ่มอันดับร้านอาหารบน Google' },
-          { title: 'บทความ SEO เทคโนโลยี', desc: 'บทความเทคโนโลยีที่ติดอันดับ' }
-        ]
-      },
-      graphic: {
-        icon: '🎨',
-        label: 'Graphic Design',
-        color: 'from-pink-500 to-rose-400',
-        items: [
-          { title: 'ออกแบบ Banner Facebook', desc: 'แบนเนอร์สวยงามดึงดูดสายตา' },
-          { title: 'ออกแบบ Logo', desc: 'โลโก้ที่สื่อถึงแบรนด์ของคุณ' },
-          { title: 'ออกแบบ Branding', desc: 'แบรนด์ดิ้งครบวงจร' }
-        ]
-      },
-      poster: {
-        icon: '🖼️',
-        label: 'Poster Design',
-        color: 'from-orange-500 to-amber-400',
-        items: [
-          { title: 'โปสเตอร์โปรโมทสินค้า', desc: 'โปสเตอร์ขายดีโดนใจ' },
-          { title: 'โปสเตอร์อีเวนต์', desc: 'ดีไซน์งานอีเวนต์สุดปัง' },
-          { title: 'โปสเตอร์โฆษณา', desc: 'โฆษณาที่ได้ผลลัพธ์' }
-        ]
-      },
-      web: {
-        icon: '💻',
-        label: 'Web Development',
-        color: 'from-indigo-500 to-purple-400',
-        items: [
-          { title: 'เว็บไซต์บริษัท', desc: 'เว็บไซต์มืออาชีพสำหรับองค์กร' },
-          { title: 'Landing Page', desc: 'หน้า Landing ที่ Convert สูง' },
-          { title: 'E-commerce', desc: 'ระบบร้านค้าออนไลน์ครบวงจร' }
-        ]
-      },
-      data: {
-        icon: '📊',
-        label: 'Data Analytics',
-        color: 'from-emerald-500 to-teal-400',
-        items: [
-          { title: 'Dashboard วิเคราะห์ยอดขาย', desc: 'Dashboard ที่เข้าใจง่าย' },
-          { title: 'Data Visualization', desc: 'แสดงข้อมูลอย่างสวยงาม' },
-          { title: 'Business Analytics', desc: 'วิเคราะห์ธุรกิจเชิงลึก' }
-        ]
-      },
-      marketing: {
-        icon: '📈',
-        label: 'Digital Marketing',
-        color: 'from-violet-500 to-fuchsia-400',
-        items: [
-          { title: 'วางแผน Digital Marketing', desc: 'กลยุทธ์การตลาดที่ได้ผล' },
-          { title: 'SEO Strategy', desc: 'วางแผน SEO ระยะยาว' },
-          { title: 'Social Media Campaign', desc: 'แคมเปญโซเชียลมีเดีย' }
-        ]
-      },
-      photo: {
-        icon: '📸',
-        label: 'Photo & Video',
-        color: 'from-red-500 to-pink-400',
-        items: [
-          { title: 'ถ่ายภาพสินค้า', desc: 'ภาพสินค้าคุณภาพสูง' },
-          { title: 'ถ่ายวิดีโอโฆษณา', desc: 'วิดีโอโฆษณาที่น่าจดจำ' },
-          { title: 'ตัดต่อวิดีโอโปรโมท', desc: 'ตัดต่อวิดีโอมืออาชีพ' }
-        ]
-      },
-      organization: {
-        icon: '🎪',
-        label: 'Event Organization',
-        color: 'from-yellow-500 to-orange-400',
-        items: [
-          { title: 'จัดอีเวนต์บริษัท', desc: 'จัดงานครบวงจร' },
-          { title: 'จัดงานสัมมนา', desc: 'สัมมนาที่ประทับใจ' },
-          { title: 'จัดกิจกรรมองค์กร', desc: 'กิจกรรมสร้างทีม' }
-        ]
-      },
-      translation: {
-        icon: '🌐',
-        label: 'Translation',
-        color: 'from-sky-500 to-blue-400',
-        items: [
-          { title: 'แปลเอกสารธุรกิจ', desc: 'แปลเอกสารแม่นยำ' },
-          { title: 'แปลเว็บไซต์', desc: 'Localization เว็บไซต์' },
-          { title: 'แปลบทความ', desc: 'แปลบทความคุณภาพ' }
-        ]
+<main class="max-w-7xl mx-auto px-4 py-12">
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold gradient-text">ผลงานทั้งหมด</h1>
+    <p class="text-slate-400 mt-2">Production Portfolio</p>
+  </header>
+
+  <input id="search" placeholder="ค้นหาผลงาน..." class="w-full mb-6 p-3 rounded bg-slate-800"/>
+
+  <div id="categoryContainer" class="flex flex-wrap gap-3 mb-10"></div>
+  <div id="portfolioGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</main>
+
+<script>
+const services = {
+  seo:{icon:'📝',label:'SEO',items:[{title:'SEO Article',desc:'Optimize ranking'}]},
+  web:{icon:'💻',label:'Web',items:[{title:'Website Dev',desc:'Fullstack dev'}]},
+  design:{icon:'🎨',label:'Design',items:[{title:'UI Design',desc:'Modern UI'}]}
+};
+
+let activeCategory='all';
+
+function renderCategories(){
+  let html='<button onclick="filterCategory(\'all\')" class="px-3 py-2 bg-indigo-500 rounded">All</button>';
+  Object.entries(services).forEach(([k,v])=>{
+    html+=`<button onclick="filterCategory('${k}')" class="px-3 py-2 bg-slate-800 rounded">${v.icon} ${v.label}</button>`;
+  });
+  document.getElementById('categoryContainer').innerHTML=html;
+}
+
+function renderPortfolio(){
+  const grid=document.getElementById('portfolioGrid');
+  const search=document.getElementById('search').value.toLowerCase();
+  let html='';
+
+  const data = activeCategory==='all'?Object.values(services):[services[activeCategory]];
+
+  data.forEach(cat=>{
+    cat.items.forEach(item=>{
+      if(item.title.toLowerCase().includes(search)){
+        html+=`<div class="glass-card p-4 rounded">
+          <div>${cat.icon}</div>
+          <h3 class="font-bold">${item.title}</h3>
+          <p class="text-sm text-slate-400">${item.desc}</p>
+        </div>`;
       }
-    };
+    });
+  });
 
-    let isDarkMode = true;
-    let activeCategory = 'all';
+  grid.innerHTML=html;
+}
 
-    function toggleMode() {
-        // เปลี่ยนจากการแก้ body class เป็นการแก้ที่ documentElement (html tag)
-        const isDark = document.documentElement.classList.toggle('dark');
-        
-        // บันทึกค่าลง localStorage เพื่อให้จำค่าได้เมื่อเปลี่ยนหน้า
-        localStorage.theme = isDark ? 'dark' : 'light';
-        
-        // เปลี่ยนไอคอน
-        document.getElementById('theme-icon').innerText = isDark ? '☀️' : '🌙';
-    }
-    
-    // เพิ่มโค้ดส่วนนี้ไว้ท้ายสุดของ Script เพื่อเช็คโหมดที่ผู้ใช้เคยเลือกไว้
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        if(document.getElementById('theme-icon')) document.getElementById('theme-icon').innerText = '☀️';
-    } else {
-        document.documentElement.classList.remove('dark');
-        if(document.getElementById('theme-icon')) document.getElementById('theme-icon').innerText = '🌙';
-    }
+function filterCategory(cat){
+  activeCategory=cat;
+  renderPortfolio();
+}
 
-    function renderPortfolio(filter = 'all') {
-        const grid = document.getElementById("portfolioGrid");
-        if (!grid) return; // ป้องกัน Error กรณีไม่พบ Grid ในหน้านั้น
-    
-        // 1. ล้างข้อมูลเก่าใน Grid ออกก่อน
-        grid.innerHTML = "";
-    
-        // 2. กรองข้อมูลตามหมวดหมู่ (ใช้ Logic เดิมจาก secondary.txt)
-        const filteredData = filter === 'all' 
-            ? portfolioData 
-            : portfolioData.filter(item => item.service === filter);
-    
-        // 3. วนลูปสร้าง Card ผลงานแต่ละชิ้น
-        filteredData.forEach((item, index) => {
-            const card = document.createElement("div");
-            
-            // ใช้คลาส Glass Card และ Animation จากไฟล์หลัก
-            // เพิ่ม stagger delay เพื่อให้การ์ดทยอยปรากฏ (0.1s, 0.2s, ...)
-            card.className = "glass-card rounded-2xl p-6 transition-all duration-300 group animate-fade-in";
-            card.style.animationDelay = `${index * 0.1}s`;
-    
-            card.innerHTML = `
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-indigo-400 font-bold text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
-                        ${serviceNames[item.service] || item.service}
-                    </span>
-                </div>
-    
-                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors duration-300 leading-tight">
-                    ${item.title}
-                </h3>
-    
-                <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
-                    ${item.description || 'รายละเอียดผลงานการสร้างสรรค์และพัฒนาอย่างมืออาชีพ เพื่อตอบโจทย์เป้าหมายของธุรกิจคุณ'}
-                </p>
-    
-                <div class="flex items-center text-indigo-400 text-sm font-semibold pt-4 border-t border-white/5 opacity-60 group-hover:opacity-100 transition-all duration-300">
-                    <span>ดูรายละเอียดผลงาน</span>
-                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-            `;
-    
-            grid.appendChild(card);
-        });
-    
-        // อัปเดตตัวเลขจำนวนผลงาน (ถ้ามีฟังก์ชันนี้ในโค้ดเดิม)
-        if (typeof updateTotalWorks === 'function') {
-            updateTotalWorks(filteredData.length);
-        }
-    }
-   
-    function filterCategory(category) {
-      activeCategory = category;
-      renderCategories();
-      renderPortfolio();
-    }
-   
-    function renderPortfolio(filter = 'all') {
-        const grid = document.getElementById("portfolioGrid");
-        grid.innerHTML = "";
+document.getElementById('search').addEventListener('input',renderPortfolio);
 
-      let html = '';
-      let index = 0;
-      
-      const categoriesToRender = activeCategory === 'all' 
-        ? Object.entries(services) 
-        : [[activeCategory, services[activeCategory]]];
-      
-      categoriesToRender.forEach(([key, category]) => {
-        category.items.forEach((item) => {
-          const staggerClass = `stagger-${(index % 5) + 1}`;
-          html += `
-            <div class="glass-card rounded-3xl p-6 work-item fade-in ${staggerClass}" style="opacity: 0;">
-              <div class="flex items-start justify-between mb-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl shadow-lg">
-                  ${category.icon}
-                </div>
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/10">
-                  ${category.label}
-                </span>
-              </div>
-              
-              <h3 class="text-lg font-semibold mb-2 leading-tight">${item.title}</h3>
-              <p class="text-sm opacity-60 mb-4">${item.desc}</p>
-              
-              <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-green-400"></span>
-                  <span class="text-xs opacity-50">พร้อมให้บริการ</span>
-                </div>
-                <button class="px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r ${category.color} hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
-                  ดูเพิ่มเติม
-                </button>
-              </div>
-            </div>
-          `;
-          index++;
-        });
-      });
-      
-      container.innerHTML = html;
-    }
+document.getElementById('themeToggle').onclick=()=>{
+  document.documentElement.classList.toggle('dark');
+};
 
-    function updateTotalWorks() {
-      let total = 0;
-      Object.values(services).forEach(cat => {
-        total += cat.items.length;
-      });
-    }
+renderCategories();
+renderPortfolio();
+</script>
 
-    async function onConfigChange(config) {
-      const pageTitle = document.getElementById('pageTitle');
-      const subtitle = document.getElementById('subtitle');
-      
-      if (pageTitle) {
-        pageTitle.textContent = config.page_title || defaultConfig.page_title;
-      }
-      
-      if (subtitle) {
-        subtitle.textContent = config.subtitle || defaultConfig.subtitle;
-      }
-      
-      document.documentElement.style.setProperty('--bg-primary', config.background_color || defaultConfig.background_color);
-      document.documentElement.style.setProperty('--bg-secondary', config.surface_color || defaultConfig.surface_color);
-      document.documentElement.style.setProperty('--text-primary', config.text_color || defaultConfig.text_color);
-      document.documentElement.style.setProperty('--accent-primary', config.primary_action_color || defaultConfig.primary_action_color);
-      document.documentElement.style.setProperty('--accent-secondary', config.secondary_action_color || defaultConfig.secondary_action_color);
-    }
-
-    // Initialize
-    document.getElementById('themeToggle').addEventListener('click', toggleMode);
-    renderCategories();
-    renderPortfolio();
-    updateTotalWorks();
-
-  </script>
- <script>(function(){
-  function c(){
-    var b=a.contentDocument||a.contentWindow.document;if(b){
-      var d=b.createElement('script');
-      d.innerHTML="window.__CF$cv$params={r:'9da1c17eb040d014',t:'MTc3MzEzOTc5OS4wMDAwMDA='};
-    var a=document.createElement('script');a.nonce='';
-      a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';
-      document.getElementsByTagName('head')[0].appendChild(a);
-      ";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');
-      a.height=1;
-      a.width=1;
-      a.style.position='absolute';
-      a.style.top=0;
-      a.style.left=0;
-      a.style.border='none';
-      a.style.visibility='hidden';
-      document.body.appendChild(a);
-      if('loading'!==document.readyState)c();
-      else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
-      else{var e=document.onreadystatechange||function(){};
-           document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}
-      }
-    }
-  })();
- </script>
- </body>
+</body>
 </html>

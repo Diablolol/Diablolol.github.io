@@ -42,22 +42,22 @@
   </style>
 </head>
 
-<body class="bg-slate-950 text-slate-100">
+<body class="bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
 
-<nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+<nav class="sticky top-0 z-50 bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
   <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="index.html" class="font-bold hover:text-indigo-400">← กลับหน้าหลัก</a>
-    <!-- <button id="themeToggle" class="p-2 bg-slate-800 rounded">🌙</button> -->
+    <a href="index.html" class="font-bold hover:text-indigo-500">← กลับหน้าหลัก</a>
+    <button id="themeToggle" class="p-2 bg-slate-200 dark:bg-slate-800 rounded">🌙</button>
   </div>
 </nav>
 
 <main class="max-w-7xl mx-auto px-4 py-12">
   <header class="text-center mb-12">
     <h1 class="text-4xl font-bold gradient-text">ผลงานทั้งหมด</h1>
-    <p class="text-slate-400 mt-2">Production Portfolio</p>
+    <p class="text-slate-500 dark:text-slate-400 mt-2">Production Portfolio</p>
   </header>
 
-  <input id="search" placeholder="ค้นหาผลงาน..." class="w-full mb-6 p-3 rounded bg-slate-800"/>
+  <input id="search" placeholder="ค้นหาผลงาน..." class="w-full mb-6 p-3 rounded bg-slate-200 dark:bg-slate-800"/>
 
   <div id="categoryContainer" class="flex flex-wrap gap-3 mb-10"></div>
   <div id="portfolioGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -72,14 +72,27 @@ const services = {
 
 let activeCategory='all';
 
+/* DARK MODE INIT */
+if(localStorage.theme === 'dark'){
+  document.documentElement.classList.add('dark');
+}
+
+/* TOGGLE */
+document.getElementById('themeToggle').onclick=()=>{
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.theme = isDark ? 'dark' : 'light';
+};
+
+/* CATEGORY */
 function renderCategories(){
-  let html='<button onclick="filterCategory(\'all\')" class="px-3 py-2 bg-indigo-500 rounded">All</button>';
+  let html='<button onclick="filterCategory(\'all\')" class="px-3 py-2 bg-indigo-500 text-white rounded">All</button>';
   Object.entries(services).forEach(([k,v])=>{
-    html+=`<button onclick="filterCategory('${k}')" class="px-3 py-2 bg-slate-800 rounded">${v.icon} ${v.label}</button>`;
+    html+=`<button onclick="filterCategory('${k}')" class="px-3 py-2 bg-slate-300 dark:bg-slate-800 rounded">${v.icon} ${v.label}</button>`;
   });
   document.getElementById('categoryContainer').innerHTML=html;
 }
 
+/* PORTFOLIO */
 function renderPortfolio(){
   const grid=document.getElementById('portfolioGrid');
   const search=document.getElementById('search').value.toLowerCase();
@@ -93,7 +106,7 @@ function renderPortfolio(){
         html+=`<div class="glass-card p-4 rounded">
           <div>${cat.icon}</div>
           <h3 class="font-bold">${item.title}</h3>
-          <p class="text-sm text-slate-400">${item.desc}</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">${item.desc}</p>
         </div>`;
       }
     });
@@ -102,17 +115,16 @@ function renderPortfolio(){
   grid.innerHTML=html;
 }
 
+/* FILTER */
 function filterCategory(cat){
   activeCategory=cat;
   renderPortfolio();
 }
 
+/* EVENTS */
 document.getElementById('search').addEventListener('input',renderPortfolio);
 
-document.getElementById('themeToggle').onclick=()=>{
-  document.documentElement.classList.toggle('dark');
-};
-
+/* INIT */
 renderCategories();
 renderPortfolio();
 </script>

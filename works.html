@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="th" class="h-full">
+<html lang="th" class="h-full scroll-smooth">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,240 +7,108 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&amp;family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
-                    },
-                    colors: {
-                        slate: {
-                            850: '#1a2332',
-                            950: '#0d1117'
-                        }
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Instrument Sans', 'Noto Sans Thai', 'sans-serif'],
+                },
+                colors: {
+                    slate: {
+                        850: '#1a2332',
+                        950: '#0d1117'
                     }
                 }
             }
         }
-  </script>  
-  <style>
-    * { box-sizing: border-box; }
-    
-    :root {
-      --text-primary: #ffffff;
-      --accent-primary: #6366f1;
-      --accent-secondary: #a855f7;
     }
-    
-    .light-mode {
-      --bg-primary: #f8fafc;
-      --bg-secondary: #ffffff;
-      --text-primary: #1e293b;
+  </script>  
+
+  <style>
+    /* CSS Variables ตามไฟล์หลัก */
+    :root {
+      --bg-primary: #0f172a; /* slate-900 */
+      --bg-secondary: #1e293b; /* slate-800 */
+      --text-primary: #f1f5f9;
       --accent-primary: #6366f1;
       --accent-secondary: #a855f7;
     }
     
     body {
-      font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
-      background: var(--bg-primary);
+      font-family: 'Instrument Sans', 'Noto Sans Thai', sans-serif;
+      background-color: #0d1117; /* slate-950 */
       color: var(--text-primary);
-      transition: all 0.4s ease;
+      transition: background-color 0.3s ease;
     }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
-    }
-    
+
+    /* Glassmorphism Effect [cite: 6, 111] */
     .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .light-mode .glass-card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    }
-    
-    .glass-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
-      border-color: var(--accent-primary);
-    }
-    
-    .category-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.1);
       transition: all 0.3s ease;
     }
     
-    .light-mode .category-btn {
-      background: rgba(99, 102, 241, 0.08);
-      border: 1px solid rgba(99, 102, 241, 0.2);
+    .glass-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
     }
-    
-    .category-btn:hover, .category-btn.active {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-    }
-    
-    .icon-circle {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
-    }
-    
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 0.6s ease forwards;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
-    .stagger-5 { animation-delay: 0.5s; }
-    
-    .glow-text {
-      text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
-    }
-    
-    .light-mode .glow-text {
-      text-shadow: none;
-    }
-    
-    .pulse-dot {
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.7; }
-    }
-    
+
+    /* Gradient Text [cite: 5, 110] */
     .gradient-text {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), #ec4899);
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    
-    .toggle-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
+
+    /* Active States [cite: 3, 107] */
+    .tab-active {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
     }
-    
-    .light-mode .toggle-btn {
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+
+    /* Animations [cite: 8, 112, 114] */
+    @keyframes float { 
+      0%, 100% { transform: translateY(0px); } 
+      50% { transform: translateY(-10px); } 
     }
-    
-    .toggle-btn:hover {
-      background: rgba(99, 102, 241, 0.3);
-      transform: scale(1.05);
+    .float-animation { animation: float 3s ease-in-out infinite; }
+
+    @keyframes fadeInUp { 
+      from { opacity: 0; transform: translateY(30px); } 
+      to { opacity: 1; transform: translateY(0); } 
     }
-    
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-    
-    .orb-1 {
-      width: 400px;
-      height: 400px;
-      background: var(--accent-primary);
-      top: -100px;
-      left: -100px;
-      animation: float 8s ease-in-out infinite;
-    }
-    
-    .orb-2 {
-      width: 300px;
-      height: 300px;
-      background: var(--accent-secondary);
-      bottom: -50px;
-      right: -50px;
-      animation: float 10s ease-in-out infinite reverse;
-    }
-    
-    .light-mode .orb {
-      opacity: 0.2;
-    }
-    
-    .work-item {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .work-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .work-item:hover::before {
-      left: 100%;
-    }
-    
-    .counter {
-      font-variant-numeric: tabular-nums;
-    }
-    
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      border-radius: 4px;
-    }
+    .animate-fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
   </style>
-  <style>body { box-sizing: border-box; }</style>
  </head>
- <body class="h-full gradient-bg overflow-auto">
-            
- <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
-     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">            
-         <a href="index.html" class="group flex items-center gap-2 font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">
-             <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-             </svg>
-             กลับหน้าหลัก
-         </a>            
-     </div>
- </nav>
-  
+ <body class="h-full font-sans">
+    <div id="app-wrapper" class="min-h-screen p-8">
+        <h1 class="text-4xl font-bold text-center mb-10 gradient-text animate-fade-in">ผลงานของเรา</h1>
+        
+        <div id="categoryContainer" class="flex justify-center gap-3 mb-12 animate-fade-in stagger-1">
+            </div>
+
+        <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in stagger-2">
+            </div>
+    </div>         
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">            
+          <a href="index.html" class="group flex items-center gap-2 font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">
+              <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+              </svg>
+              กลับหน้าหลัก
+          </a>            
+      </div>
+  </nav>
+   
   <!-- Background Orbs -->
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>

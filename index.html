@@ -124,6 +124,19 @@
         .stagger-4 {
             animation-delay: 0.4s;
         }
+
+        .tab-content-item {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tab-content-item.hidden {
+            display: none !important;
+        }
+
+        .tab-content-item.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
     </style>
     <style>
         body {
@@ -1299,83 +1312,73 @@
             });
         }
 
-        // จับเหตุการณ์ scroll เพื่ออัปเดต active state
-        window.addEventListener('scroll', updateActiveNav);
-
-        // ========================================
-        // 4. Service Tabs Functionality
-        // ========================================
-        // เลือก: ปุ่มเด้อร์แท็บบริการ (.service-tab) และการ์ดบริการ ([data-category])
-        const serviceTabs = document.querySelectorAll('.service-tab');
-        const serviceCards = document.querySelectorAll('[data-category]');
-
-        serviceTabs.forEach(tab => {
-            // เมื่อกดแท็บเด้อร์บริการ
-            tab.addEventListener('click', () => {
-                // อัปเดตสถานะแท็บ: เอา class 'tab-active' ออกจากแท็บทั้งหมด
-                serviceTabs.forEach(t => {
-                    t.classList.remove('tab-active');
-                    t.classList.add('bg-slate-800'); // เพิ่มสีพื้นหลัง
-                    t.setAttribute('aria-selected', 'false'); // ตั้ง aria-selected เป็น false
-                });
-                // เพิ่ม class 'tab-active' ให้แท็บที่คลิก
-                tab.classList.add('tab-active');
-                tab.classList.remove('bg-slate-800');
-                tab.setAttribute('aria-selected', 'true');
-
-                // กรองการ์ดบริการตามหมวดหมู่
-                const category = tab.id.replace('tab-', ''); // ดึงชื่อหมวดหมู่จาก id
-                serviceCards.forEach(card => {
-                    // ถ้าแท็บเป็น 'all' หรือหมวดหมู่ตรงกัน ให้แสดงการ์ด
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = '';
-                        card.style.opacity = '0';
-                        // ใช้ setTimeout เพื่อสร้าง animation fade-in
-                        setTimeout(() => { card.style.opacity = '1'; }, 50);
-                    } else {
-                        card.style.display = 'none'; // ซ่อนการ์ดที่ไม่ตรงกัน
-                    }
-                });
-            });
+        // จับเหตุการณ์ scroll เพื่ออัปเดต active state (with throttling)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) return; // ถ้ายังมี timeout อยู่ ให้ข้ามการทำงาน
+            updateActiveNav();
+            scrollTimeout = setTimeout(() => { scrollTimeout = null; }, 250); // รอ 250ms ก่อนการทำงานครั้งถัดไป
         });
 
         // ========================================
-        // 5. Skills Tabs Functionality
+        // 4. Reusable Tab System Function
         // ========================================
-        // เลือก: ปุ่มเด้อร์แท็บทักษะ (.skills-tab) และป้ายทักษะ ([data-skill-category])
-        const skillsTabs = document.querySelectorAll('.skills-tab');
-        const skillBadges = document.querySelectorAll('[data-skill-category]');
+        /**
+         * ฟังก์ชันทำให้ tab system ทำงานได้อย่างซ้ำใช้
+         * @param {string} tabSelector - CSS selector สำหรับแท็บ (เช่น '.service-tab')
+         * @param {string} contentSelector - CSS selector สำหรับ content items (เช่น '[data-category]')
+         * @param {string} categoryAttribute - ชื่อ data attribute (เช่น 'category' หรือ 'skillCategory')
+         * @param {string} idPrefix - prefix ที่ใช้ในการดึง category จาก id (เช่น 'tab-' หรือ 'skills-tab-')
+         */
+        function createTabSystem(tabSelector, contentSelector, categoryAttribute, idPrefix) {
+            const tabs = document.querySelectorAll(tabSelector);
+            const contentItems = document.querySelectorAll(contentSelector);
 
-        skillsTabs.forEach(tab => {
-            // เมื่อกดแท็บทักษะ
-            tab.addEventListener('click', () => {
-                // อัปเดตสถานะแท็บ
-                skillsTabs.forEach(t => {
-                    t.classList.remove('tab-active'); // เอา class active ออก
-                    t.classList.add('bg-slate-800');
-                    t.setAttribute('aria-selected', 'false');
-                });
-                tab.classList.add('tab-active'); // เพิ่ม class active
-                tab.classList.remove('bg-slate-800');
-                tab.setAttribute('aria-selected', 'true');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // อัปเดตสถานะแท็บทั้งหมด
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('bg-slate-800');
+                        t.setAttribute('aria-selected', 'false');
+                    });
 
-                // กรองป้ายทักษะตามหมวดหมู่
-                const category = tab.id.replace('skills-tab-', ''); // ดึงชื่อหมวดหมู่
-                skillBadges.forEach(badge => {
-                    // แสดงหรือซ่อนป้ายตามหมวดหมู่
-                    if (category === 'all' || badge.dataset.skillCategory === category) {
-                        badge.style.display = '';
-                        badge.style.opacity = '0';
-                        setTimeout(() => { badge.style.opacity = '1'; }, 50); // fade-in animation
-                    } else {
-                        badge.style.display = 'none';
-                    }
+                    // ตั้งแท็บที่คลิกให้เป็น active
+                    tab.classList.add('tab-active');
+                    tab.classList.remove('bg-slate-800');
+                    tab.setAttribute('aria-selected', 'true');
+
+                    // ดึงชื่อ category จาก id
+                    const category = tab.id.replace(idPrefix, '');
+
+                    // กรองและแสดง/ซ่อน content items
+                    contentItems.forEach(item => {
+                        const itemCategory = item.dataset[categoryAttribute];
+                        
+                        if (category === 'all' || itemCategory === category) {
+                            item.classList.remove('hidden');
+                            item.classList.add('visible', 'tab-content-item');
+                        } else {
+                            item.classList.add('hidden');
+                            item.classList.remove('visible');
+                        }
+                    });
                 });
             });
-        });
+        }
 
         // ========================================
-        // 6. Contact Form Handling
+        // 5. Service Tabs Functionality (using reusable function)
+        // ========================================
+        createTabSystem('.service-tab', '[data-category]', 'category', 'tab-');
+
+        // ========================================
+        // 6. Skills Tabs Functionality (using reusable function)
+        // ========================================
+        createTabSystem('.skills-tab', '[data-skill-category]', 'skillCategory', 'skills-tab-');
+
+        // ========================================
+        // 7. Contact Form Handling
         // ========================================
         // เลือก: ฟอร์มติดต่อ (#contact-form) และ success message (#form-success)
         const contactForm = document.getElementById('contact-form');
@@ -1406,7 +1409,7 @@
         });
 
         // ========================================
-        // 7. Privacy & Terms Modal Handling
+        // 8. Privacy & Terms Modal Handling
         // ========================================
         // เลือก: ลิงก์ Privacy/Terms (#privacy-link, #terms-link)
         // และ modal containers (#privacy-modal, #terms-modal)
@@ -1462,7 +1465,7 @@
         });
 
         // ========================================
-        // 8. Portfolio Modal Functionality
+        // 9. Portfolio Modal Functionality
         // ========================================
         // เลือก: Portfolio modal (#portfolio-modal) และปุ่มปิด (#close-portfolio)
         // และการ์ด portfolio ที่มี data-portfolio-id
@@ -1622,7 +1625,7 @@
         });
 
         // ========================================
-        // 9. Back to Portfolio Gallery
+        // 10. Back to Portfolio Gallery
         // ========================================
         // เมื่อคลิกปุ่ม "Back to Gallery" (#back-to-gallery) จะกลับไปแสดง grid view
         backToGalleryBtn.addEventListener('click', () => {
@@ -1631,14 +1634,14 @@
         });
 
         // ========================================
-        // 10. Update Copyright Year
+        // 11. Update Copyright Year
         // ========================================
         // อัปเดตปีประจำปีปัจจุบันใน footer (#copyright-year)
         // เช่น 2024, 2025 ฯลฯ ตามปีปัจจุบัน
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
         // ========================================
-        // 11. Add Transition Styles
+        // 12. Add Transition Styles
         // ========================================
         // เพิ่ม CSS transition properties ให้กับการ์ดทั้งหมด
         // สำหรับ smooth animation เมื่อกรองการ์ด (fade in/out effect)

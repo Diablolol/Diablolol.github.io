@@ -1693,58 +1693,34 @@
             }
         }
    }) ();
-    </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "พีรัชชัย",
-      "jobTitle": "Professional Freelancer",
-      "description": "Freelancer ให้บริการเขียนบทความ SEO, ออกแบบกราฟิก, พัฒนาเว็บไซต์, Data Analytics และ Digital Marketing",
-      "url": "https://yourdomain.com",
-      "email": "contact@example.com",
-      "telephone": "+66123456789",
-      "knowsAbout": [
-        "SEO Content Writing",
-        "Web Development",
-        "Graphic Design",
-        "Data Analytics",
-        "Digital Marketing"
-      ],
-      "offers": {
-        "@type": "OfferCatalog",
-        "name": "Freelance Services",
-        "itemListElement": [
-          {
-            "@type": "Service",
-            "name": "SEO Content Writing",
-            "description": "บริการเขียนบทความ SEO พร้อม Keyword Research และ On-page Optimization"
-          },
-          {
-            "@type": "Service",
-            "name": "Web Development",
-            "description": "พัฒนาเว็บไซต์ Static, Dynamic, E-commerce และ Web Application"
-          },
-          {
-            "@type": "Service",
-            "name": "Data Analytics",
-            "description": "วิเคราะห์ข้อมูล สร้าง Dashboard และรายงานเพื่อช่วยในการตัดสินใจ"
-          },
-          {
-            "@type": "Service",
-            "name": "Digital Marketing",
-            "description": "วางแผนและดำเนินการแคมเปญการตลาดดิจิทัลและโฆษณาออนไลน์"
-          },
-          {
-            "@type": "Service",
-            "name": "Graphic Design",
-            "description": "ออกแบบโลโก้ โปสเตอร์ และสื่อการตลาด"
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "พีรัชชัย",
+          "jobTitle": "Professional Freelancer",
+        
+          // 🔥 ดึง category จาก portfolioData
+          "knowsAbout": [...new Set(
+            Object.values(portfolioData).map(p => p.category)
+          )],
+        
+          // 🔥 แปลงเป็น Service จริง
+          "offers": {
+            "@type": "OfferCatalog",
+            "name": "Freelance Services",
+            "itemListElement": Object.values(portfolioData).map(p => ({
+              "@type": "Service",
+              "name": p.title,
+              "description": p.description
+            }))
           }
-        ]
-      }
-    }
-    </script>
+        };
+        const script = document.createElement("script");
+            script.type = "application/ld+json";
+            script.textContent = JSON.stringify(schema);            
+            document.head.appendChild(script);
+    </script>    
 </body>
 
 </html>
